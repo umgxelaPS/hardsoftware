@@ -1,7 +1,8 @@
 # Ignora la conexion a BD
 src/BD/ConexionBD.java
 # omitir archivos build
-build/*
-dist/*
-build/built-jar.properties
 *.properties
+build/built-jar.properties
+build/
+dist/*
+
