@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="559.0" prefWidth="555.0" style="-fx-background-color: fff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Clientes.ConsultaClientesController">
+   <children>
+      <GridPane layoutX="35.0" layoutY="13.0" prefHeight="531.0" prefWidth="504.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Nit :" GridPane.rowIndex="3" />
+            <JFXTextField fx:id="txtNit" maxWidth="434.0" minWidth="419.0" prefHeight="31.0" prefWidth="418.0" GridPane.rowIndex="4" />
+            <Label text="Nombre :" GridPane.rowIndex="5" />
+            <JFXTextField fx:id="txtNombre" maxWidth="434.0" minWidth="419.0" prefHeight="31.0" prefWidth="419.0" GridPane.rowIndex="6" />
+            <Label text="Apellido :" GridPane.rowIndex="7" />
+            <JFXTextField fx:id="txtApellido" maxWidth="440.0" minWidth="419.0" prefHeight="31.0" prefWidth="417.0" GridPane.rowIndex="8" />
+            <Label text="Dirección :" GridPane.rowIndex="9" />
+            <JFXTextField fx:id="txtDireccion" maxWidth="417.0" minWidth="419.0" prefHeight="31.0" prefWidth="417.0" GridPane.rowIndex="10" />
+            <Label text="Teléfono :" GridPane.rowIndex="11" />
+            <JFXTextField fx:id="txtTelefono" maxWidth="476.0" minWidth="419.0" prefHeight="31.0" prefWidth="419.0" GridPane.rowIndex="12" />
+            <JFXButton fx:id="btnNuevo" contentDisplay="GRAPHIC_ONLY" onAction="#NuevaConsulta" GridPane.rowIndex="14">
+               <graphic>
+                  <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/if_contact-new_23203.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnConsulta" contentDisplay="GRAPHIC_ONLY" onAction="#Consulta" GridPane.columnIndex="2" GridPane.rowIndex="14">
+               <graphic>
+                  <ImageView fitHeight="94.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/if_magnifyingglass_1055031.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnVolver" contentDisplay="GRAPHIC_ONLY" onAction="#btnVolver" GridPane.columnIndex="4" GridPane.rowIndex="14">
+               <graphic>
+                  <ImageView fitHeight="73.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/if_back_23191.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <ImageView fitHeight="19.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@../Imagenes/letrero.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
+      <Label layoutX="527.0" layoutY="5.0" onMouseClicked="#Cerrar" text="X" textFill="#f80404">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
