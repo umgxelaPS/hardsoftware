@@ -1,2 +1,2 @@
 # Ignora la conexion a BD
-ConexionBD.java
+src/BD/ConexionBD.java
