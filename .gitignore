@@ -4,4 +4,4 @@ src/BD/ConexionBD.java
 build/*
 dist/*
 build/built-jar.properties
-
+*.properties
