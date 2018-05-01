@@ -3,3 +3,5 @@ src/BD/ConexionBD.java
 # omitir archivos build
 build/*
 dist/*
+build/built-jar.properties
+
