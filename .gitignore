@@ -1,2 +1,5 @@
 # Ignora la conexion a BD
 src/BD/ConexionBD.java
+# omitir archivos build
+build/built-jar
+dist/HardS_FX.jar
