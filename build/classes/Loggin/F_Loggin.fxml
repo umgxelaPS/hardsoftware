@@ -37,12 +37,12 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="12.0" layoutY="97.0" maxWidth="260.0" minWidth="260.0" prefHeight="39.0" prefWidth="260.0" promptText="Usuario">
+            <JFXTextField fx:id="txtusuario" layoutX="12.0" layoutY="97.0" maxWidth="260.0" minWidth="260.0" prefHeight="39.0" prefWidth="260.0" promptText="Usuario">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="12.0" layoutY="172.0" maxWidth="260.0" minWidth="260.0" prefHeight="39.0" prefWidth="260.0" promptText="Contraseña">
+            <JFXTextField fx:id="txtpass" layoutX="12.0" layoutY="172.0" maxWidth="260.0" minWidth="260.0" prefHeight="39.0" prefWidth="260.0" promptText="Contraseña">
                <font>
                   <Font size="14.0" />
                </font>
