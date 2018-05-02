@@ -33,7 +33,9 @@ public class ConexionBD extends Application {
     public Connection conexion(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
+
             conectar = DriverManager.getConnection("jdbc:mysql://25.75.85.180:3306/bd_hardsoftware","marlon","enrique");
+
         } catch (Exception e) {
             System.out.println(e);
         }
