@@ -116,7 +116,7 @@ public class EliminarEmpleadosController implements Initializable {
                 txtTelefono.setText(result.getString(7));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ConsultaClientesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EliminarEmpleadosController.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Registro no encontrado", "Error", JOptionPane.WARNING_MESSAGE);
         }
     }
@@ -142,7 +142,7 @@ public class EliminarEmpleadosController implements Initializable {
             txtTelefono.setText("");
             
         } catch (SQLException ex) {
-            Logger.getLogger(EliminarClientesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EliminarEmpleadosController.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Registro no encontrado", "Error", JOptionPane.WARNING_MESSAGE);
         }
     }

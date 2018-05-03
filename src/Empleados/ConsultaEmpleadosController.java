@@ -122,7 +122,7 @@ public class ConsultaEmpleadosController implements Initializable {
                 txtTelefono.setText(result.getString(7));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ConsultaClientesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConsultaEmpleadosController.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Registro no encontrado", "Error", JOptionPane.WARNING_MESSAGE);
         }
     }

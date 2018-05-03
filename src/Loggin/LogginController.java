@@ -4,10 +4,16 @@
  * and open the template in the editor.
  */
 package Loggin;
-
-import hards_fx.HardS_FX;
+ 
+import BD.ConexionBD;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,9 +23,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -33,8 +39,12 @@ public class LogginController implements Initializable {
     @FXML
     private Button usuario;
     @FXML
-    private Button cliente;
-    
+    private Button sesion;
+    @FXML
+    private JFXTextField txtusuario;
+
+    @FXML
+    private PasswordField txtpass;
     @FXML   
     private void Cerrar(ActionEvent event){
        System.exit(0);
@@ -60,10 +70,32 @@ public class LogginController implements Initializable {
         stage.show();
         
     }
+     //Instancia Conexión BD
+    ConexionBD conectar = new ConexionBD();
+    Connection con=conectar.conexion();
+    PreparedStatement preparar;
+    ResultSet result;
+    //String para la consulta
+    String consultar;
+    String nombre;
+    String apellido;
+    String direccion;
+    int telefono;
     
+
     @FXML
-    private void btnCliente(ActionEvent event) throws IOException{
-        node=(Node) event.getSource();
+    private void btnLoggin(ActionEvent event) throws IOException{
+            String capturarol="";
+        String sql="SELECT * FROM usuario WHERE usuario='"+txtusuario.getText()+"' && contraseña='"+txtpass.getText()+"'";
+        try {
+            
+            Statement st =con.createStatement();
+            ResultSet rs= st.executeQuery(sql);
+            while (rs.next()){
+            capturarol=rs.getString("tipo_usuario");
+            }
+            if (capturarol.equals("vendedor")){
+                node=(Node) event.getSource();
         stage=(Stage) node.getScene().getWindow();
         
         parent=FXMLLoader.load(getClass().getResource("/Dashboard/Dashboard.fxml"));
@@ -73,6 +105,16 @@ public class LogginController implements Initializable {
         stage.centerOnScreen();
         stage.setTitle("Dashboard");
         stage.show();
+            }else{
+            JOptionPane.showMessageDialog(null, "USUARIO NO REGISTRADO", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+            
+        } catch (SQLException ex) {
+            //Logger.getLogger(LogginController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "USUARIO NO REGISTRADO", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
         
     }
     

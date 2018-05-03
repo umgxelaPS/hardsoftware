@@ -133,7 +133,7 @@ public class RegistroEmpleadosController implements Initializable {
             txtDireccion.setText("");
             txtTelefono.setText("");
         } catch (SQLException ex) {
-            Logger.getLogger(ConsultaClientesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegistroClientesController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Eror, Usuario no registrado");
         }  
     }

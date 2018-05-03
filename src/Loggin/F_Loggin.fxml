@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
@@ -37,17 +38,17 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="12.0" layoutY="97.0" maxWidth="260.0" minWidth="260.0" prefHeight="39.0" prefWidth="260.0" promptText="Usuario">
+            <JFXTextField fx:id="txtusuario" layoutX="12.0" layoutY="96.0" maxWidth="260.0" minWidth="260.0" prefHeight="39.0" prefWidth="260.0" promptText="Usuario">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="12.0" layoutY="172.0" maxWidth="260.0" minWidth="260.0" prefHeight="39.0" prefWidth="260.0" promptText="Contraseña">
+            <JFXPasswordField fx:id="txtpass" layoutX="15.0" layoutY="176.0" maxWidth="260.0" minWidth="260.0" prefHeight="39.0" prefWidth="260.0" promptText="Contraseña">
                <font>
                   <Font size="14.0" />
                </font>
-            </JFXTextField>
-            <JFXButton fx:id="cliente" contentDisplay="GRAPHIC_ONLY" layoutX="117.0" layoutY="228.0" onAction="#btnCliente">
+            </JFXPasswordField>
+            <JFXButton fx:id="sesion" contentDisplay="GRAPHIC_ONLY" layoutX="117.0" layoutY="228.0" onAction="#btnLoggin">
                <graphic>
                   <FontAwesomeIconView fill="#1a33d5" glyphName="CHEVRON_CIRCLE_RIGHT" size="40" text="" />
                </graphic></JFXButton>
