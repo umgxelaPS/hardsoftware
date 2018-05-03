@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package Loggin;
-
+ 
 import BD.ConexionBD;
-import Clientes.ConsultaClientesController;
 import com.jfoenix.controls.JFXTextField;
-import hards_fx.HardS_FX;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -17,8 +15,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,8 +23,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -44,12 +39,12 @@ public class LogginController implements Initializable {
     @FXML
     private Button usuario;
     @FXML
-    private Button cliente;
+    private Button sesion;
     @FXML
     private JFXTextField txtusuario;
 
     @FXML
-    private JFXTextField txtpass;
+    private PasswordField txtpass;
     @FXML   
     private void Cerrar(ActionEvent event){
        System.exit(0);
@@ -89,7 +84,7 @@ public class LogginController implements Initializable {
     
 
     @FXML
-    private void btnCliente(ActionEvent event) throws IOException{
+    private void btnLoggin(ActionEvent event) throws IOException{
             String capturarol="";
         String sql="SELECT * FROM usuario WHERE usuario='"+txtusuario.getText()+"' && contraseña='"+txtpass.getText()+"'";
         try {

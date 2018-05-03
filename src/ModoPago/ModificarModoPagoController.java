@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proveedores;
+package ModoPago;
 
 import BD.ConexionBD;
 import com.jfoenix.controls.JFXButton;
@@ -24,7 +24,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -34,9 +33,11 @@ import javax.swing.JOptionPane;
  *
  * @author DAVID
  */
-public class EliminarProveedoresController implements Initializable {
+public class ModificarModoPagoController implements Initializable {
 
-    
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -46,28 +47,19 @@ public class EliminarProveedoresController implements Initializable {
     private JFXTextField txtId;
 
     @FXML
-    private JFXTextField txtNombre;
-
-    @FXML
-    private JFXTextField txtDireccion;
-
-    @FXML
-    private JFXTextField txtTelefono;
+    private JFXTextField txtDescripcion;
 
     @FXML
     private JFXButton btnLimpiar;
 
     @FXML
     private JFXButton btnConsultar;
-
-    @FXML
-    private JFXButton btnEliminar;
     
     @FXML
-    private JFXButton btnVolver;
+    private JFXButton btnEditar;
 
     @FXML
-    private Label Cerrar;
+    private JFXButton btnVolver;
     
     //Instancia Conexión BD
     ConexionBD conectar = new ConexionBD();
@@ -77,9 +69,7 @@ public class EliminarProveedoresController implements Initializable {
     
     //VariablesGlobales
     int id;
-    String nombre;
-    String direccion;
-    int telefono;
+    String descripcion;
     
     //Sentencia SQL
     String consultar;
@@ -89,77 +79,71 @@ public class EliminarProveedoresController implements Initializable {
     Stage stage;
     Parent parent;
     Scene root;
-
-    
+   
     @FXML
-    void Cerrar(MouseEvent event) {
-        System.exit(0);
-    }
-
-    @FXML
-    void Limpiar(ActionEvent event) {
-        txtId.setText("");
-        txtNombre.setText("");
-        txtDireccion.setText("");
-        txtTelefono.setText("");
-    }
-
-    @FXML
-    void btnConsultar(ActionEvent event) {
+    void btnConsultar(ActionEvent event) throws IOException {
         con=conectar.conexion();
         
-        consultar="SELECT nombre,direccion,telefono FROM proveedor WHERE id_proveedor='".concat(txtId.getText()).concat("'");
+        consultar="SELECT nombre FROM modo_pago WHERE id_pago='".concat(txtId.getText()).concat("'");
         
         try {
             preparar=con.prepareStatement(consultar);
             result=preparar.executeQuery();
             
             while(result.next()){
-                txtNombre.setText(result.getString(1));
-                txtDireccion.setText(result.getString(2));
-                txtTelefono.setText(result.getString(3));
+                txtDescripcion.setText(result.getString(1));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(EliminarProveedoresController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Registro no encontrado", "Error", JOptionPane.WARNING_MESSAGE);
+            Logger.getLogger(ModificarModoPagoController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Registro no encontrado");
         }
+        
     }
 
     @FXML
-    void btnEliminar(ActionEvent event){
+    void btnEditar(ActionEvent event) {
         con=conectar.conexion();
         
-        consultar="DELETE FROM proveedor WHERE id_proveedor='".concat(txtId.getText()).concat("'");
-        
+        consultar="UPDATE modo_pago SET nombre=? WHERE id_pago='".concat(txtId.getText()).concat("'");
         try {
             preparar=con.prepareStatement(consultar);
+            
+            preparar.setString(1, txtDescripcion.getText());
+            
             preparar.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Registro Eliminado");
+            
+            JOptionPane.showMessageDialog(null,"Registro Modificado");
             
             txtId.setText("");
-            txtNombre.setText("");
-            txtDireccion.setText("");
-            txtTelefono.setText("");
+            txtDescripcion.setText("");
             
         } catch (SQLException ex) {
-            Logger.getLogger(EliminarProveedoresController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Registro no encontrado", "Error", JOptionPane.WARNING_MESSAGE);
+            Logger.getLogger(ModificarModoPagoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
+    @FXML
+    void btnLimpiar(ActionEvent event) {
+        txtId.setText("");
+        txtDescripcion.setText("");
+    }
+
     @FXML
     void btnVolver(ActionEvent event) throws IOException {
         node=(Node) event.getSource();
         stage=(Stage) node.getScene().getWindow();
         
-        parent=FXMLLoader.load(getClass().getResource("/Proveedores/RegistroProveedores.fxml"));
+        parent=FXMLLoader.load(getClass().getResource("/ModoPago/RegistroModoPago.fxml"));
         
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.setTitle("Registro Proveedores");
+        stage.setTitle("Registro Modo Pago");
         stage.show();
+
     }
-    
-    
+    @FXML   
+    void Cerrar(MouseEvent event){
+        System.exit(0);
+    }
 }

@@ -6,8 +6,6 @@
 package Usuario;
 
 import BD.ConexionBD;
-import Clientes.*;
-import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,6 +22,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -48,7 +47,7 @@ public class UsuariosController implements Initializable {
     @FXML
     private TextField  txtusuario;
     @FXML
-    private TextField  txtcontrasenia;
+    private PasswordField  txtcontrasenia;
     @FXML
     private TextField  txtrol;
     @FXML
@@ -117,7 +116,7 @@ public class UsuariosController implements Initializable {
             txtestado.setText("");
 
         } catch (SQLException ex) {
-            Logger.getLogger(ConsultaClientesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuariosController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Eror, Usuario no registrado");
         }  
     }
@@ -132,7 +131,7 @@ public class UsuariosController implements Initializable {
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.setTitle("Registro Clientes");
+        stage.setTitle("Loggin");
         stage.show();
         
     }

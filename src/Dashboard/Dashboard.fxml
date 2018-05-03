@@ -140,6 +140,21 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
+            <JFXButton fx:id="btnModoPago" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#btnModoPago" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Modo Pago" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/if_Purse_669953.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
             <JFXButton fx:id="btnSalir" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#btnSalir" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Salir" textFill="#5b5858">
                <font>
                   <Font size="13.0" />

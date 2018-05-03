@@ -51,6 +51,9 @@ public class DashboardController implements Initializable {
     private JFXButton btnVentas;
 
     @FXML
+    private JFXButton btnModoPago;
+    
+    @FXML
     private JFXButton btnReportes;
 
     @FXML
@@ -88,6 +91,11 @@ public class DashboardController implements Initializable {
     @FXML
     void btnProveedores(ActionEvent event) throws Exception {
         this.createPage(homePane, "/Proveedores/RegistroProveedores.fxml");
+    }
+    
+    @FXML
+    void btnModoPago(ActionEvent event) throws Exception {
+        this.createPage(homePane, "/ModoPago/RegistroModoPago.fxml");
     }
 
     @FXML

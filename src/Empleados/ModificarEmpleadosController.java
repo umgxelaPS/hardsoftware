@@ -6,7 +6,6 @@
 package Empleados;
 
 import BD.ConexionBD;
-import Clientes.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -116,7 +115,7 @@ public class ModificarEmpleadosController implements Initializable {
                 txtTelefono.setText(result.getString(7));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ConsultaClientesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarEmpleadosController.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Registro no encontrado", "Error", JOptionPane.WARNING_MESSAGE);
         }
     }
@@ -151,7 +150,7 @@ public class ModificarEmpleadosController implements Initializable {
             txtTelefono.setText("");
             
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarClientesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarEmpleadosController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     @FXML   

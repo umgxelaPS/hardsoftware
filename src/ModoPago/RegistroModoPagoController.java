@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proveedores;
+package ModoPago;
 
 import BD.ConexionBD;
 import com.jfoenix.controls.JFXButton;
@@ -23,7 +23,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -33,9 +32,11 @@ import javax.swing.JOptionPane;
  *
  * @author DAVID
  */
-public class RegistroProveedoresController implements Initializable {
+public class RegistroModoPagoController implements Initializable {
 
-    
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -45,13 +46,7 @@ public class RegistroProveedoresController implements Initializable {
     private JFXTextField txtId;
 
     @FXML
-    private JFXTextField txtNombre;
-
-    @FXML
-    private JFXTextField txtDireccion;
-
-    @FXML
-    private JFXTextField txtTelefono;
+    private JFXTextField txtDescripcion;
 
     @FXML
     private JFXButton btnLimpiar;
@@ -60,16 +55,13 @@ public class RegistroProveedoresController implements Initializable {
     private JFXButton btnGuardar;
 
     @FXML
-    private JFXButton btnConsultar;
-
-    @FXML
     private JFXButton btnEditar;
 
     @FXML
-    private JFXButton btnEliminar;
+    private JFXButton btnConsultar;
 
     @FXML
-    private Label Cerrar;
+    private JFXButton btnEliminar;
     
     //Instancia Conexión BD
     ConexionBD conectar = new ConexionBD();
@@ -78,9 +70,7 @@ public class RegistroProveedoresController implements Initializable {
     
     //VariablesGlobales
     int id;
-    String nombre;
-    String direccion;
-    int telefono;
+    String descripcion;
     
     //Sentencia SQL
     String sql;
@@ -90,32 +80,53 @@ public class RegistroProveedoresController implements Initializable {
     Stage stage;
     Parent parent;
     Scene root;
-
+    
     
     @FXML
-    void Cerrar(MouseEvent event) {
-        System.exit(0);
+    void btnGuardar(ActionEvent event) {
+        id=Integer.parseInt(txtId.getText());
+        descripcion=txtDescripcion.getText();
+
+        
+        //Guardar Registros en BD
+        sql="INSERT INTO modo_pago(id_pago,nombre) VALUES(?,?)";
+        
+        try {
+            preparar = con.prepareStatement(sql);
+            preparar.setInt(1, id);
+            preparar.setString(2, descripcion);
+            
+            preparar.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"Registro Guardado");
+            
+            txtId.setText("");
+            txtDescripcion.setText("");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroModoPagoController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Error al guardar el registro");
+        }  
+
     }
 
     @FXML
-    void Limpiar(ActionEvent event) {
+    void btnLimpiar(ActionEvent event) {
         txtId.setText("");
-        txtNombre.setText("");
-        txtDireccion.setText("");
-        txtTelefono.setText("");
+        txtDescripcion.setText("");
     }
-
+    
     @FXML
     void btnConsultar(ActionEvent event) throws IOException {
         node=(Node) event.getSource();
         stage=(Stage) node.getScene().getWindow();
         
-        parent=FXMLLoader.load(getClass().getResource("/Proveedores/ConsultaProveedores.fxml"));
+        parent=FXMLLoader.load(getClass().getResource("/ModoPago/ConsultaModoPago.fxml"));
         
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.setTitle("Consulta Proveedores");
+        stage.setTitle("Consulta Modo Pago");
         stage.show();
     }
 
@@ -124,12 +135,12 @@ public class RegistroProveedoresController implements Initializable {
         node=(Node) event.getSource();
         stage=(Stage) node.getScene().getWindow();
         
-        parent=FXMLLoader.load(getClass().getResource("/Proveedores/ModificarProveedores.fxml"));
+        parent=FXMLLoader.load(getClass().getResource("/ModoPago/ModificarModoPago.fxml"));
         
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.setTitle("Modificar Proveedores");
+        stage.setTitle("Modificar Modo Pago");
         stage.show();
 
     }
@@ -139,45 +150,17 @@ public class RegistroProveedoresController implements Initializable {
         node=(Node) event.getSource();
         stage=(Stage) node.getScene().getWindow();
         
-        parent=FXMLLoader.load(getClass().getResource("/Proveedores/EliminarProveedores.fxml"));
+        parent=FXMLLoader.load(getClass().getResource("/ModoPago/EliminarModoPago.fxml"));
         
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.setTitle("Eliminar Proveedores");
+        stage.setTitle("Modificar Modo Pago");
         stage.show();
-    }
-
-    @FXML
-    void btnGuardar(ActionEvent event) {
-        id=Integer.parseInt(txtId.getText());
-        nombre=txtNombre.getText();
-        direccion=txtDireccion.getText();
-        telefono=Integer.parseInt(txtTelefono.getText());
-        
-        //Guardar Registros en BD
-        sql="INSERT INTO proveedor(id_proveedor,nombre,direccion,telefono) VALUES(?,?,?,?)";
-        
-        try {
-            preparar = con.prepareStatement(sql);
-            preparar.setInt(1, id);
-            preparar.setString(2, nombre);
-            preparar.setString(3, direccion);
-            preparar.setInt(4, telefono);
-            preparar.executeUpdate();
-            
-            JOptionPane.showMessageDialog(null,"Registro Guardado");
-            
-            txtId.setText("");
-            txtNombre.setText("");
-            txtDireccion.setText("");
-            txtTelefono.setText("");
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistroProveedoresController.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Eror, Usuario no registrado");
-        }  
 
     }
-    
-    
+    @FXML   
+    void Cerrar(MouseEvent event){
+        System.exit(0);
+    }
 }
