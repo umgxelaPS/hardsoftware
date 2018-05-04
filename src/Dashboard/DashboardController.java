@@ -84,8 +84,8 @@ public class DashboardController implements Initializable {
     }
 
     @FXML
-    void btnProductos(ActionEvent event) {
-
+    void btnProductos(ActionEvent event) throws Exception {
+        this.createPage(homePane, "/Productos/RegistroProductos.fxml");
     }
 
     @FXML
