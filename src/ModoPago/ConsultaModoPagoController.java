@@ -6,8 +6,6 @@
 package ModoPago;
 
 import BD.ConexionBD;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,6 +22,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -44,19 +44,19 @@ public class ConsultaModoPagoController implements Initializable {
     }    
     
     @FXML
-    private JFXTextField txtId;
+    private TextField txtId;
 
     @FXML
-    private JFXTextField txtDescripcion;
+    private TextField txtDescripcion;
 
     @FXML
-    private JFXButton btnLimpiar;
+    private Button btnLimpiar;
 
     @FXML
-    private JFXButton btnConsultar;
+    private Button btnConsultar;
 
     @FXML
-    private JFXButton btnVolver;
+    private Button btnVolver;
     
     //Instancia Conexión BD
     ConexionBD conectar = new ConexionBD();

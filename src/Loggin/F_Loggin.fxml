@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="325.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggin.LogginController">
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggin.LogginController">
    <children>
       <AnchorPane prefHeight="382.0" prefWidth="366.0" style="-fx-background-color: #1A33D5;">
          <children>
@@ -31,7 +31,7 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="367.0" prefHeight="382.0" prefWidth="283.0" style="-fx-background-color: fff;">
+      <AnchorPane layoutX="367.0" prefHeight="382.0" prefWidth="288.0" style="-fx-background-color: fff;">
          <children>
             <Label layoutX="99.0" layoutY="32.0" text="Ingresar" textFill="#1a33d5">
                <font>
@@ -67,14 +67,15 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <JFXButton fx:id="cerrar" contentDisplay="GRAPHIC_ONLY" layoutX="242.0" layoutY="12.0" onAction="#Cerrar" prefHeight="25.0" prefWidth="51.0">
+            <JFXButton fx:id="cerrar" contentDisplay="GRAPHIC_ONLY" layoutX="223.0" layoutY="17.0" onAction="#Cerrar" prefHeight="29.0" prefWidth="37.0" text="Salir">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Imagenes/if_Close_2001866.png" />
                      </image>
                   </ImageView>
-               </graphic></JFXButton>
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>

@@ -23,7 +23,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -52,6 +51,8 @@ public class RegistroClientesController implements Initializable {
     public Button btnModificar;
     @FXML  
     public Button btnEliminar;
+    @FXML  
+    public Button btnVolver;
     //Declaración de textos
     @FXML
     public TextField txtNit;
@@ -85,10 +86,6 @@ public class RegistroClientesController implements Initializable {
     Parent parent;
     Scene root;
     
-    @FXML   
-    private void Cerrar(MouseEvent event){
-        System.exit(0);
-    }
     
     @FXML   
     private void GuardarCliente(ActionEvent event){
@@ -174,6 +171,21 @@ public class RegistroClientesController implements Initializable {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setTitle("Eliminar Clientes");
+        stage.show();
+        
+    }
+    
+    @FXML
+    private void btnVolver(ActionEvent event) throws IOException{
+        node=(Node) event.getSource();
+        stage=(Stage) node.getScene().getWindow();
+        
+        parent=FXMLLoader.load(getClass().getResource("/Dashboard/Dashboard.fxml"));
+        
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Dashboard");
         stage.show();
         
     }

@@ -131,13 +131,10 @@ public class UsuariosController implements Initializable {
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.centerOnScreen();
+        stage.setResizable(false);
         stage.setTitle("Loggin");
         stage.show();
         
     }
     
-    @FXML   
-    private void Cerrar(MouseEvent event){
-        System.exit(0);
-    }   
 }

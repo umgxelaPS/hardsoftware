@@ -10,9 +10,8 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="559.0" prefWidth="481.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Productos.ConsultaProductosController">
+<AnchorPane id="AnchorPane" prefHeight="559.0" prefWidth="481.0" style="-fx-background-color: fffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Productos.ConsultaProductosController">
    <children>
       <GridPane layoutX="38.0" layoutY="25.0" prefHeight="510.0" prefWidth="425.0">
         <columnConstraints>
@@ -86,11 +85,6 @@
             </JFXButton>
          </children>
       </GridPane>
-      <Label fx:id="Cerrar" layoutX="456.0" layoutY="7.0" onMouseClicked="#Cerrar" text="X" textFill="#f80404">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="29.0" fitWidth="148.0" layoutX="184.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagenes/letrero.jpg" />

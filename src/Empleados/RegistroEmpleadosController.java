@@ -6,13 +6,11 @@
 package Empleados;
 
 import BD.ConexionBD;
-import Clientes.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,6 +52,8 @@ public class RegistroEmpleadosController implements Initializable {
     public Button btnModificar;
     @FXML  
     public Button btnEliminar;
+    @FXML  
+    public Button btnVolver;
     //Declaración de textos
     @FXML
     public TextField txtDpi;
@@ -133,7 +133,7 @@ public class RegistroEmpleadosController implements Initializable {
             txtDireccion.setText("");
             txtTelefono.setText("");
         } catch (SQLException ex) {
-            Logger.getLogger(RegistroClientesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegistroEmpleadosController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Eror, Usuario no registrado");
         }  
     }
@@ -196,9 +196,19 @@ public class RegistroEmpleadosController implements Initializable {
         
     }
     
-    @FXML   
-    private void Cerrar(MouseEvent event){
-        System.exit(0);
+    @FXML
+    private void btnVolver(ActionEvent event) throws IOException{
+        node=(Node) event.getSource();
+        stage=(Stage) node.getScene().getWindow();
+        
+        parent=FXMLLoader.load(getClass().getResource("/Dashboard/Dashboard.fxml"));
+        
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Dashboard");
+        stage.show();
+        
     }
     
     

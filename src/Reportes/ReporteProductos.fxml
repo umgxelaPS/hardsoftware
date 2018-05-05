@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="453.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Reportes.ReporteProductosController">
+   <children>
+      <TableView fx:id="Tabla" layoutX="14.0" layoutY="14.0" prefHeight="375.0" prefWidth="736.0">
+        <columns>
+          <TableColumn fx:id="id_producto" prefWidth="75.0" text="Id Producto" />
+          <TableColumn fx:id="id_proveedor" prefWidth="90.0" text="Id Proveedor" />
+            <TableColumn fx:id="nombre" prefWidth="131.0" text="Nombre" />
+            <TableColumn fx:id="marca" prefWidth="103.0" text="Marca" />
+            <TableColumn fx:id="modelo" prefWidth="75.0" text="Modelo" />
+            <TableColumn fx:id="precio_compra" prefWidth="101.0" text="Precio Compra" />
+            <TableColumn fx:id="precio_venta" prefWidth="87.0" text="Precio Venta" />
+            <TableColumn fx:id="cantidad" prefWidth="75.0" text="Cantidad" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnVolver" contentDisplay="GRAPHIC_ONLY" layoutX="453.0" layoutY="413.0" onAction="#btnVolver">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/if_back_23191.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+   </children>
+</AnchorPane>

@@ -9,9 +9,6 @@ import BD.ConexionBD;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +23,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -49,43 +49,46 @@ public class RegistroProductosController implements Initializable {
     
     
     
-    ObservableList<String> Marcas = FXCollections.observableArrayList("Samsung","Dell","HP","Cannon","Epson");
+    ObservableList<String> Marcas = FXCollections.observableArrayList("Samsung","Dell","HP","Cannon","Epson","MicroSoft");
             
     @FXML
-    private JFXTextField txtProveedor;
+    private TextField txtProveedor;
 
     @FXML
-    private JFXTextField txtNombre;
+    private TextField txtNombre;
 
     @FXML
-    private JFXComboBox comboMarca;
+    private ComboBox comboMarca;
 
     @FXML
-    private JFXTextField txtModelo;
+    private TextField txtModelo;
 
     @FXML
-    private JFXTextField txtPrecioCompra;
+    private TextField txtPrecioCompra;
 
     @FXML
-    private JFXTextField txtPrecioVenta;
+    private TextField txtPrecioVenta;
 
     @FXML
-    private JFXTextField txtCantidad;
+    private TextField txtCantidad;
 
     @FXML
-    private JFXButton btnLimpiar;
+    private Button btnLimpiar;
 
     @FXML
-    private JFXButton btnGuardar;
+    private Button btnGuardar;
 
     @FXML
-    private JFXButton btnEditar;
+    private Button btnEditar;
 
     @FXML
-    private JFXButton btnConsultar;
+    private Button btnConsultar;
 
     @FXML
-    private JFXButton btnEliminar;
+    private Button btnEliminar;
+    
+    @FXML  
+    public Button btnVolver;
 
     @FXML
     private Label Cerrar;
@@ -211,7 +214,17 @@ public class RegistroProductosController implements Initializable {
     }
     
     @FXML
-    void Cerrar(MouseEvent event) {
-        System.exit(0);
+    private void btnVolver(ActionEvent event) throws IOException{
+        node=(Node) event.getSource();
+        stage=(Stage) node.getScene().getWindow();
+        
+        parent=FXMLLoader.load(getClass().getResource("/Dashboard/Dashboard.fxml"));
+        
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Dashboard");
+        stage.show();
+        
     }
 }

@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 package Loggin;
- 
+
 import BD.ConexionBD;
-import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,6 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -41,7 +41,7 @@ public class LogginController implements Initializable {
     @FXML
     private Button sesion;
     @FXML
-    private JFXTextField txtusuario;
+    private TextField txtusuario;
 
     @FXML
     private PasswordField txtpass;
