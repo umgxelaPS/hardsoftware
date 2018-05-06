@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.DashboardController">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1060.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.DashboardController">
    <children>
-      <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1271.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="224.0" layoutY="47.0" text="HardSoftware" textFill="WHITE">
                <font>
@@ -125,21 +125,6 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton fx:id="btnReportes" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#btnReportes" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Reportes" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Imagenes/if_custom-reports_63120.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
             <JFXButton fx:id="btnModoPago" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#btnModoPago" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Modo Pago" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
@@ -148,6 +133,21 @@
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Imagenes/if_Purse_669953.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="btnReportes" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#btnReportes" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Reportes" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/if_custom-reports_63120.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -187,6 +187,13 @@
             <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
          </effect>
       </Pane>
-      <Pane fx:id="pane" layoutX="213.0" layoutY="175.0" prefHeight="422.0" prefWidth="1035.0" />
+      <Pane fx:id="pane" layoutX="213.0" layoutY="175.0" prefHeight="422.0" prefWidth="803.0">
+         <children>
+            <ImageView fitHeight="395.0" fitWidth="408.0" layoutX="204.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/hs.jpg" />
+               </image>
+            </ImageView>
+         </children></Pane>
    </children>
 </AnchorPane>

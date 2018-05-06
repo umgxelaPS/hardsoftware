@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="472.0" prefWidth="468.0" style="-fx-background-color: fffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Reportes.ReportesController">
+   <children>
+      <GridPane layoutX="43.0" layoutY="14.0" prefHeight="363.0" prefWidth="129.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="208.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="209.0" minHeight="10.0" prefHeight="121.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="261.0" minHeight="10.0" prefHeight="124.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="259.0" minHeight="10.0" prefHeight="144.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <JFXButton fx:id="btnClientes" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" onAction="#btnClientes" text="CLIENTES">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/if_clients_43573.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnProductos" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" onAction="#btnProductos" text="PRODUCTOS" GridPane.rowIndex="1">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/if_palet02_62584.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnProveedores" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" onAction="#btnProveedores" text="PROVEEDORES" GridPane.rowIndex="2">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/if_provider_45019.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </GridPane>
+      <JFXButton fx:id="btnVolver" contentDisplay="GRAPHIC_ONLY" layoutX="196.0" layoutY="396.0" onAction="#btnVolver" prefHeight="56.0" prefWidth="76.0" text="Volver">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/if_back_23191.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <GridPane layoutX="196.0" layoutY="23.0" prefHeight="363.0" prefWidth="129.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="208.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="209.0" minHeight="10.0" prefHeight="121.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="261.0" minHeight="10.0" prefHeight="124.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="259.0" minHeight="10.0" prefHeight="144.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <JFXButton fx:id="btnEmpleado" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" onAction="#btnEmpleados" text="EMPLEADOS">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/if_Administrator%202_22176.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnModoPago" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" onAction="#btnModoPago" text="MODOPAGO" GridPane.rowIndex="1">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/if_Purse_669953.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

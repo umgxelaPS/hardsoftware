@@ -6,8 +6,6 @@
 package Proveedores;
 
 import BD.ConexionBD;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,7 +22,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -43,28 +43,28 @@ public class EliminarProveedoresController implements Initializable {
     }    
     
     @FXML
-    private JFXTextField txtId;
+    private TextField txtId;
 
     @FXML
-    private JFXTextField txtNombre;
+    private TextField txtNombre;
 
     @FXML
-    private JFXTextField txtDireccion;
+    private TextField txtDireccion;
 
     @FXML
-    private JFXTextField txtTelefono;
+    private TextField txtTelefono;
 
     @FXML
-    private JFXButton btnLimpiar;
+    private Button btnLimpiar;
 
     @FXML
-    private JFXButton btnConsultar;
+    private Button btnConsultar;
 
     @FXML
-    private JFXButton btnEliminar;
+    private Button btnEliminar;
     
     @FXML
-    private JFXButton btnVolver;
+    private Button btnVolver;
 
     @FXML
     private Label Cerrar;
