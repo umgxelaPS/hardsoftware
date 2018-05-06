@@ -1,7 +1,6 @@
 #Ignora la conexion a BD
 src/BD/ConexionBD.java
 
-
 # NetBeans specific #
 nbproject/private/
 build/
