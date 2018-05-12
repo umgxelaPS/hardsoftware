@@ -11,18 +11,18 @@
 
 <AnchorPane id="AnchorPane" prefHeight="629.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Facturacion.VentasFacController">
    <children>
-      <ImageView fitHeight="95.0" fitWidth="102.0" layoutX="14.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="95.0" fitWidth="102.0" layoutX="79.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagenes/hs.jpg" />
          </image>
       </ImageView>
-      <Text layoutX="17.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Momostenango, Totonicapán" wrappingWidth="189.994140625" />
-      <Text layoutX="16.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1ra. Avenida &quot;A&quot; 1-41 Zona 2" />
-      <Text layoutX="17.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Barrio patzite." />
-      <Text layoutX="102.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel: 7736-5929" />
-      <Text layoutX="317.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proforma Electronica" wrappingWidth="131.994145154953" />
-      <Text layoutX="336.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No:" wrappingWidth="26.994140625" />
-      <Text layoutX="17.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nit. 5498192-1" />
+      <Text layoutX="85.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Momostenango, Totonicapán" wrappingWidth="189.994140625" />
+      <Text layoutX="85.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1ra. Avenida &quot;A&quot; 1-41 Zona 2" />
+      <Text layoutX="85.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Barrio patzite." />
+      <Text layoutX="169.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel: 7736-5929" />
+      <Text layoutX="321.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proforma Electronica" wrappingWidth="131.994145154953" />
+      <Text layoutX="324.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No:" wrappingWidth="26.994140625" />
+      <Text layoutX="85.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nit. 5498192-1" />
       <TextField layoutX="358.0" layoutY="76.0" prefHeight="25.0" prefWidth="85.0" />
       <Text layoutX="19.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="53.994140625" />
       <TextField layoutX="73.0" layoutY="139.0" prefHeight="25.0" prefWidth="214.0" />
