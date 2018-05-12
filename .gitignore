@@ -1,8 +1,20 @@
-# Ignora la conexion a BD
+#Ignora la conexion a BD
 src/BD/ConexionBD.java
-# omitir archivos build
-*.properties
-build/built-jar.properties
+**/build/built-jar.properties
+# NetBeans specific #
+nbproject/private/
 build/
-dist/*
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
 

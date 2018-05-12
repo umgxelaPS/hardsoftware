@@ -24,12 +24,13 @@ public class HardS_FX extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Loggin/F_Loggin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Dashboard/Dashboard.fxml"));
         
-        //stage.initStyle(StageStyle.TRANSPARENT);
+        stage.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(root);
-        
+        stage.setTitle("Loggin");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

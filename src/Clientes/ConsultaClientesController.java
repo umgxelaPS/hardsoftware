@@ -44,7 +44,7 @@ public class ConsultaClientesController implements Initializable {
     private void Cerrar(MouseEvent event){
         System.exit(0);
     }
-    
+     
     //Declaración de Botones
     @FXML  
     public Button btnConsulta;

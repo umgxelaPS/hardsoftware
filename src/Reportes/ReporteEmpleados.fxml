@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="453.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Reportes.ReporteEmpleadosController">
+   <children>
+      <TableView fx:id="Tabla" layoutX="14.0" layoutY="14.0" prefHeight="375.0" prefWidth="1067.0">
+        <columns>
+          <TableColumn fx:id="c_dpi" prefWidth="113.99996948242188" text="DPI" />
+          <TableColumn fx:id="nombre" prefWidth="146.0" text="Nombre" />
+            <TableColumn fx:id="apellido" prefWidth="160.0" text="Apellido" />
+            <TableColumn fx:id="nacimiento" prefWidth="104.0" text="Nacimiento" />
+            <TableColumn fx:id="cargo" prefWidth="116.0" text="Cargo" />
+            <TableColumn fx:id="salario" prefWidth="104.0" text="Salario" />
+            <TableColumn fx:id="direccion" prefWidth="205.0" text="Dirección" />
+            <TableColumn fx:id="telefono" prefWidth="116.0" text="Teléfono" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnVolver" contentDisplay="GRAPHIC_ONLY" layoutX="453.0" layoutY="413.0" onAction="#btnVolver">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/if_back_23191.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+   </children>
+</AnchorPane>
