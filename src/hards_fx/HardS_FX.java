@@ -31,7 +31,7 @@ public class HardS_FX extends Application {
         Scene scene = new Scene(root);
         stage.setTitle("Loggin");
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.show();
     }
 

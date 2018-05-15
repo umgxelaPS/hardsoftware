@@ -167,7 +167,7 @@ public class DashboardController implements Initializable {
      node=(Node) event.getSource();
         stage=(Stage) node.getScene().getWindow();
         
-        parent=FXMLLoader.load(getClass().getResource("/Facturacion/VentasFac.fxml"));
+        parent=FXMLLoader.load(getClass().getResource("/Facturacion/puntodeventa.fxml"));
         
         Scene scene = new Scene(parent);
         stage.setScene(scene);
@@ -187,7 +187,7 @@ node=(Node) event.getSource();
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setTitle("Reportes");
-        stage.show();        
+        stage.show();    
 //System.exit(0);
         
     }

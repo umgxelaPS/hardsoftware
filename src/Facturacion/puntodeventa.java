@@ -5,17 +5,23 @@
  */
 package Facturacion;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -66,7 +72,11 @@ public class puntodeventa implements Initializable {
     private TextField netPayableField;
     @FXML
     private Button paymentButton;
-
+  //Variables para Cambio de escenas
+    Node node;
+    Stage stage;
+    Parent parent;
+    Scene root;
     /**
      * Initializes the controller class.
      */
@@ -76,7 +86,18 @@ public class puntodeventa implements Initializable {
     }    
 
     @FXML
-    private void logoutAction(ActionEvent event) {
+    private void logoutAction(ActionEvent event) throws IOException {
+        node=(Node) event.getSource();
+        stage=(Stage) node.getScene().getWindow();
+        
+        parent=FXMLLoader.load(getClass().getResource("/Dashboard/Dashboard.fxml"));
+        
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.setTitle("Loggin");
+        stage.show();
     }
 
     @FXML
