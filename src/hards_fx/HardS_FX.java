@@ -24,6 +24,7 @@ public class HardS_FX extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+        //Quitar Login
         Parent root = FXMLLoader.load(getClass().getResource("/Dashboard/Dashboard.fxml"));
         
         stage.initStyle(StageStyle.TRANSPARENT);
