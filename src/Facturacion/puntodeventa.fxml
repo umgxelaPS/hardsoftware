@@ -126,8 +126,8 @@
                                     <TextArea fx:id="descriptionArea" editable="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                                     <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefHeight="35.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                        <children>
-                                          <TextField fx:id="quantityField" disable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="80.0" HBox.hgrow="ALWAYS" />
-                                          <Label fx:id="quantityLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="100.0" text="Stock:" HBox.hgrow="ALWAYS">
+                                          <TextField fx:id="quantityField" disable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="383.0" HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="quantityLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="127.0" text="Stock:" HBox.hgrow="ALWAYS">
                                              <HBox.margin>
                                                 <Insets left="5.0" />
                                              </HBox.margin>

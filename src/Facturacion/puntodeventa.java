@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -30,6 +31,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -54,15 +56,11 @@ public class puntodeventa implements Initializable {
     @FXML
     private TableColumn<ClaseProducto, String> productColumn;
     @FXML
-    private TableView<?> listTableView;
+    private TableView<articulo> listTableView;
     @FXML
-    private TableColumn<?, ?> itemColumn;
+    private TableColumn<articulo, String> itemColumn;
     @FXML
-    private TableColumn<?, ?> priceColumn;
-    @FXML
-    private TableColumn<?, ?> quantityColumn;
-    @FXML
-    private TableColumn<?, ?> totalColumn;
+    private TableColumn<articulo,Double> priceColumn,quantityColumn,totalColumn;
     @FXML
     private TextField productField;
     @FXML
@@ -90,19 +88,20 @@ public class puntodeventa implements Initializable {
     @FXML
     private Button paymentButton;
     @FXML
-    private ObservableList<ClaseProducto> ITEMLIST;
-  //Variables para Cambio de escenas
+    private ObservableList<articulo> ITEMLIST;
+    private ClaseProducto productModel;
+    //Variables para Cambio de escenas
     Node node;
     Stage stage;
     Parent parent;
     Scene root;
-    
+
     //Instancia Conexión BD
     ConexionBD conectar = new ConexionBD();
-    Connection con=conectar.conexion();
+    Connection con = conectar.conexion();
     PreparedStatement preparar;
     ResultSet result;
-    
+
     //VariablesGlobales
     int idProveedor;
     String nombre;
@@ -113,55 +112,73 @@ public class puntodeventa implements Initializable {
     int cantidad;
     //Sentencia SQL
     String consultar;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        con=conectar.conexion();
-        
-          productColumn.setCellValueFactory(new PropertyValueFactory<ClaseProducto,String>("nombre"));
+        con = conectar.conexion();
+        ITEMLIST = FXCollections.observableArrayList();
+        productModel = new ClaseProducto();
+        productColumn.setCellValueFactory(new PropertyValueFactory<ClaseProducto, String>("nombre"));
         Informacion();
-  productColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        
+        //Inicio Data
+        productColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         productTableView.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showDetails(newValue));
-        productTableView.setItems(ITEMLIST);
+        (observable, oldValue, newValue) -> showDetails(newValue));
+        productTableView.setItems(PRODUCTLIST);
+        
         filterData();
+    itemColumn.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        totalColumn.setCellValueFactory(new PropertyValueFactory<>("total"));
+        listTableView.setItems(ITEMLIST);
         
-    }    
- public void Informacion(){
-        ITEMLIST=FXCollections.observableArrayList();
+        addButton
+                .disableProperty()
+                .bind(Bindings.isEmpty(productTableView.getSelectionModel().getSelectedItems()));
+        removeButton
+                .disableProperty()
+                .bind(Bindings.isEmpty(listTableView.getSelectionModel().getSelectedItems()));
         
+    }
+
+    public void Informacion() {
+        // PRODUCTLIST = FXCollections.observableArrayList();
+
         try {
-            String query="SELECT * FROM producto";
-            result=con.createStatement().executeQuery(query);
-            while(result.next()){
+            String query = "SELECT * FROM producto";
+            result = con.createStatement().executeQuery(query);
+            while (result.next()) {
                 ClaseProducto producto = new ClaseProducto();
-                //producto.idProducto.set(result.getInt("id_producto"));
-               // producto.idProveedor.set(result.getInt("id_proveedor"));
+                producto.idProducto.set(result.getInt("id_producto"));
+                producto.idProveedor.set(result.getInt("id_proveedor"));
                 producto.nombre.set(result.getString("nombre"));
-                System.out.println("XD"+result.getString("nombre"));
-               // producto.marca.set(result.getString("marca"));
-               // producto.modelo.set(result.getString("modelo"));
-               // producto.PrecioC.set(result.getFloat("precio_compra"));
-               // producto.PrecioV.set(result.getFloat("precio_venta"));
-               // producto.cantidad.set(result.getInt("cantidad"));
-                ITEMLIST.add(producto);
-        }
-            productTableView.setItems(ITEMLIST);
+                producto.marca.set(result.getString("marca"));
+                producto.modelo.set(result.getString("modelo"));
+                producto.PrecioC.set(result.getFloat("precio_compra"));
+                producto.PrecioV.set(result.getFloat("precio_venta"));
+                producto.cantidad.set(result.getInt("cantidad"));
+                PRODUCTLIST.add(producto);
+            }
+            productTableView.setItems(PRODUCTLIST);
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null,"Error al cargar los datos");
+            JOptionPane.showMessageDialog(null, "Error al cargar los datos");
         }
- }
+    }
+
     @FXML
     private void logoutAction(ActionEvent event) throws IOException {
-        node=(Node) event.getSource();
-        stage=(Stage) node.getScene().getWindow();
-        
-        parent=FXMLLoader.load(getClass().getResource("/Dashboard/Dashboard.fxml"));
-        
+        node = (Node) event.getSource();
+        stage = (Stage) node.getScene().getWindow();
+
+        parent = FXMLLoader.load(getClass().getResource("/Dashboard/Dashboard.fxml"));
+
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.centerOnScreen();
@@ -172,25 +189,48 @@ public class puntodeventa implements Initializable {
 
     @FXML
     private void addAction(ActionEvent event) {
+         if (validateInput()) {
+            String productName = productField.getText();
+            double unitPrice = Double.parseDouble(priceField.getText());
+            double quantity = Double.parseDouble(quantityField.getText());
+            double total = unitPrice * quantity;
+            ITEMLIST.add(new articulo(productName, unitPrice, quantity, total));
+            calculation();
+
+            resetAdd();
+            productTableView.getSelectionModel().clearSelection();
+        }
     }
 
     @FXML
     private void removeAction(ActionEvent event) {
+
+        int index = listTableView.getSelectionModel().getSelectedIndex();
+
+        if (index > 0) {
+            listTableView.getItems().remove(index);
+            calculation();
+        } else if (index == 0) {
+            listTableView.getItems().remove(index);
+            resetInvoice();
+        }
     }
 
     @FXML
     private void resetAction(ActionEvent event) {
+        resetInterface();
     }
 
     @FXML
     private void paymentAction(ActionEvent event) {
     }
-  private void filterData() {
-        FilteredList<ClaseProducto> searchedData = new FilteredList<>(ITEMLIST, e -> true);
-   ClaseProducto producto = new ClaseProducto();
+
+    private void filterData() {
+        FilteredList<ClaseProducto> searchedData = new FilteredList<>(PRODUCTLIST, e -> true);
+
         searchField.setOnKeyReleased(e -> {
             searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-                searchedData.setPredicate(product -> {
+                searchedData.setPredicate(producto -> {
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
@@ -208,9 +248,117 @@ public class puntodeventa implements Initializable {
             sortedData.comparatorProperty().bind(productTableView.comparatorProperty());
             productTableView.setItems(sortedData);
         });
-    }  
-
-    private void showDetails(ClaseProducto newValue) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+     private void showDetails(ClaseProducto product) {
+        if (product != null) {
+            quantityField.setDisable(false);
+            productField.setText(product.getNombre());
+            priceField.setText(String.valueOf(product.getPrecioV()));
+
+            double quantity = product.getCantidad();
+
+            if (quantity > 0) {
+                quantityField.setEditable(true);
+                quantityField.setStyle(null);
+            } else {
+                quantityField.setEditable(false);
+                quantityField.setStyle("-fx-background-color: red;");
+            }
+            quantityLabel.setText("Stock: " + String.valueOf(quantity));
+            descriptionArea.setText(product.getMarca()+" "+product.getModelo());
+        } else {
+            productField.setText("");
+            priceField.setText("");
+            quantityLabel.setText("");
+            descriptionArea.setText("");
+        }
+    }
+     private boolean validateInput() {
+
+        String errorMessage = "";
+
+        if (quantityField.getText() == null || quantityField.getText().length() == 0) {
+            errorMessage += "Cantidad no Ingresada!\n";
+        } else {
+            double quantity = Double.parseDouble(quantityField.getText());
+            String available = quantityLabel.getText();
+            double availableQuantity = Double.parseDouble(available.substring(7));
+
+            if (quantity > availableQuantity) {
+                errorMessage += "Fuera de disponibilidad!\n";
+            }
+        }
+
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Alerta");
+            alert.setHeaderText("Por favor ingresa un numero válido de productos");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
+            quantityField.setText("");
+
+            return false;
+        }
+    }
+      private void calculation() {
+
+        double subTotalPrice = 0.0;
+        subTotalPrice = listTableView.getItems().stream().map(
+                (item) -> item.getTotal()).reduce(subTotalPrice, (accumulator, _item) -> accumulator + _item);
+
+        if (subTotalPrice > 0) {
+            paymentButton.setDisable(false);
+            double vat = (double) subTotalPrice * 0.025;
+            double netPayablePrice = (double) (Math.abs((subTotalPrice + vat) - 5));
+
+            subTotalField.setText(String.valueOf(subTotalPrice));
+            vatField.setText(String.valueOf(vat));
+            netPayableField.setText(String.valueOf(netPayablePrice));
+        }
+    }
+      private void resetProductTableSelection() {
+        productTableView.getSelectionModel().clearSelection();
+    }
+
+    private void resetItemTable() {
+        ITEMLIST.clear();
+    }
+
+    private void resetAdd() {
+        productField.setText("");
+        priceField.setText("");
+        quantityField.setText("");
+        resetQuantityField();
+        quantityLabel.setText("Stock: ");
+        descriptionArea.setText("");
+    }
+
+    private void resetInvoice() {
+        subTotalField.setText("0.00");
+        vatField.setText("0.00");
+        netPayableField.setText("0.00");
+    }
+
+    private void resetQuantityField() {
+        quantityField.setDisable(true);
+    }
+
+    private void resetPaymentButton() {
+        paymentButton.setDisable(true);
+    }
+
+    private void resetInterface() {
+//        Informacion();
+        resetPaymentButton();
+        resetProductTableSelection();
+        resetItemTable();
+        resetQuantityField();
+        resetAdd();
+        resetInvoice();
+    }
+
+
 }
