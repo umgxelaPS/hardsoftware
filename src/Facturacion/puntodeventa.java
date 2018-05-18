@@ -5,6 +5,8 @@
  */
 package Facturacion;
 
+import Facturacion.pagos.pago;
+import Facturacion.pagos.FacturacionController;
 import BD.ConexionBD;
 import static Facturacion.ProductoInterfaz.PRODUCTLIST;
 import Productos.ConsultaProductosController;
@@ -39,7 +41,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 
 /**
@@ -60,7 +66,7 @@ public class puntodeventa implements Initializable {
     @FXML
     private TableColumn<articulo, String> itemColumn;
     @FXML
-    private TableColumn<articulo,Double> priceColumn,quantityColumn,totalColumn;
+    private TableColumn<articulo, Double> priceColumn, quantityColumn, totalColumn;
     @FXML
     private TextField productField;
     @FXML
@@ -90,6 +96,8 @@ public class puntodeventa implements Initializable {
     @FXML
     private ObservableList<articulo> ITEMLIST;
     private ClaseProducto productModel;
+    private double xOffset = 0;
+    private double yOffset = 0;
     //Variables para Cambio de escenas
     Node node;
     Stage stage;
@@ -124,27 +132,27 @@ public class puntodeventa implements Initializable {
         productModel = new ClaseProducto();
         productColumn.setCellValueFactory(new PropertyValueFactory<ClaseProducto, String>("nombre"));
         Informacion();
-        
+
         //Inicio Data
         productColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         productTableView.getSelectionModel().selectedItemProperty().addListener(
-        (observable, oldValue, newValue) -> showDetails(newValue));
+                (observable, oldValue, newValue) -> showDetails(newValue));
         productTableView.setItems(PRODUCTLIST);
-        
+
         filterData();
-    itemColumn.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        itemColumn.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         totalColumn.setCellValueFactory(new PropertyValueFactory<>("total"));
         listTableView.setItems(ITEMLIST);
-        
+
         addButton
                 .disableProperty()
                 .bind(Bindings.isEmpty(productTableView.getSelectionModel().getSelectedItems()));
         removeButton
                 .disableProperty()
                 .bind(Bindings.isEmpty(listTableView.getSelectionModel().getSelectedItems()));
-        
+
     }
 
     public void Informacion() {
@@ -189,7 +197,7 @@ public class puntodeventa implements Initializable {
 
     @FXML
     private void addAction(ActionEvent event) {
-         if (validateInput()) {
+        if (validateInput()) {
             String productName = productField.getText();
             double unitPrice = Double.parseDouble(priceField.getText());
             double quantity = Double.parseDouble(quantityField.getText());
@@ -222,7 +230,39 @@ public class puntodeventa implements Initializable {
     }
 
     @FXML
-    private void paymentAction(ActionEvent event) {
+    private void paymentAction(ActionEvent event) throws IOException {
+        /*       pago payment = new pago(
+        Double.parseDouble(subTotalField.getText().trim()),
+        Double.parseDouble(vatField.getText().trim()),
+        Double.parseDouble(discountField.getText().trim()),
+        Double.parseDouble(netPayableField.getText().trim())
+        );
+        
+        ObservableList<articulo> sold = listTableView.getItems();
+        
+        FXMLLoader loader = new FXMLLoader((getClass().getResource("/Facturacion/pagos/facturacion.fxml")));
+        FacturacionController controller = new FacturacionController ();
+        loader.setController(controller);
+        controller.setData(Double.parseDouble(netPayableField.getText().trim()), sold, payment);
+        root = loader.load();
+        stage = new Stage();
+        root.setOnMousePressed((MouseEvent e) -> {
+        xOffset = e.getSceneX();
+        yOffset = e.getSceneY();
+        });
+        root.setOnMouseDragged((MouseEvent e) -> {
+        stage.setX(e.getScreenX() - xOffset);
+        stage.setY(e.getScreenY() - yOffset);
+        });
+        Scene scene = new Scene(root);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Pagos");
+        stage.initStyle(StageStyle.UNDECORATED);
+        // stage.getIcons().add(new Image("/images/logo.png"));
+        stage.setScene(scene);
+        stage.showAndWait();
+        
+        resetInterface();*/
     }
 
     private void filterData() {
@@ -250,7 +290,7 @@ public class puntodeventa implements Initializable {
         });
     }
 
-     private void showDetails(ClaseProducto product) {
+    private void showDetails(ClaseProducto product) {
         if (product != null) {
             quantityField.setDisable(false);
             productField.setText(product.getNombre());
@@ -266,7 +306,7 @@ public class puntodeventa implements Initializable {
                 quantityField.setStyle("-fx-background-color: red;");
             }
             quantityLabel.setText("Stock: " + String.valueOf(quantity));
-            descriptionArea.setText(product.getMarca()+" "+product.getModelo());
+            descriptionArea.setText(product.getMarca() + " " + product.getModelo());
         } else {
             productField.setText("");
             priceField.setText("");
@@ -274,7 +314,8 @@ public class puntodeventa implements Initializable {
             descriptionArea.setText("");
         }
     }
-     private boolean validateInput() {
+
+    private boolean validateInput() {
 
         String errorMessage = "";
 
@@ -303,7 +344,8 @@ public class puntodeventa implements Initializable {
             return false;
         }
     }
-      private void calculation() {
+
+    private void calculation() {
 
         double subTotalPrice = 0.0;
         subTotalPrice = listTableView.getItems().stream().map(
@@ -319,7 +361,8 @@ public class puntodeventa implements Initializable {
             netPayableField.setText(String.valueOf(netPayablePrice));
         }
     }
-      private void resetProductTableSelection() {
+
+    private void resetProductTableSelection() {
         productTableView.getSelectionModel().clearSelection();
     }
 
@@ -359,6 +402,5 @@ public class puntodeventa implements Initializable {
         resetAdd();
         resetInvoice();
     }
-
 
 }

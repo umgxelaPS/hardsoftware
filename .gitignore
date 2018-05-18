@@ -18,3 +18,5 @@ nb-configuration.xml
 *.war
 *.ear
 
+/src/ventas/PosController.java
+/src/Facturacion/PosController.java
