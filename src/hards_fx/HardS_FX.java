@@ -25,6 +25,7 @@ public class HardS_FX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //Quitar Login
+        
         Parent root = FXMLLoader.load(getClass().getResource("/Dashboard/Dashboard.fxml"));
         
         stage.initStyle(StageStyle.TRANSPARENT);
@@ -33,11 +34,12 @@ public class HardS_FX extends Application {
         stage.setScene(scene);
         stage.setResizable(true);
         stage.show();
+        
     }
 
     
     public static void main(String[] args) {
-        launch(args);
+              launch(args);
     }
     
 }
