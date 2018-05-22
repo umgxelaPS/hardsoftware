@@ -8,10 +8,17 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="HardS_FX.jar" size="523506" download="eager" />
     <jar href="lib\fontawesomefx-8.9.jar" size="571068" download="eager" />
     <jar href="lib\jfoenix.jar" size="2211776" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.46-bin.jar" size="1004840" download="eager" />
+=======
+    <jar href="HardS_FX.jar" size="517854" download="eager" />
+    <jar href="lib/fontawesomefx-8.9.jar" size="571068" download="eager" />
+    <jar href="lib/jfoenix.jar" size="2211776" download="eager" />
+    <jar href="lib/mysql-connector-java-5.1.46-bin.jar" size="1004840" download="eager" />
+>>>>>>> 3a9328b4549fe1d88dde85cbef0394517417a984
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="HardS_FX" >
     <param name="requiredFXVersion" value="8.0+"/>
