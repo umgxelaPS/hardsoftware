@@ -175,7 +175,7 @@ public class ModificarProductosController implements Initializable {
             
         } catch (SQLException ex) {
             Logger.getLogger(ModificarProductosController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null,"Registro no Modificado");
+            JOptionPane.showMessageDialog(null,"Error al modificar el registro");
         }
     
     }

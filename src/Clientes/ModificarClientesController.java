@@ -133,6 +133,7 @@ public class ModificarClientesController implements Initializable {
             
         } catch (SQLException ex) {
             Logger.getLogger(ModificarClientesController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Error al modificar el registro");
         }
     }
     

@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,7 +49,7 @@ public class ConsultaEmpleadosController implements Initializable {
     @FXML  
     public Button btnNuevo;
     @FXML  
-    public Button btnVolver;
+    public Button btnVolver; 
     //Declaración de textos
     @FXML
     public TextField txtDpi;
@@ -57,7 +58,7 @@ public class ConsultaEmpleadosController implements Initializable {
     @FXML
     public TextField txtApellido;
     @FXML
-    public TextField txtNacimiento;
+    public DatePicker txtNacimiento;
     @FXML
     public TextField txtCargo;
     @FXML
@@ -113,7 +114,7 @@ public class ConsultaEmpleadosController implements Initializable {
             while(result.next()){
                 txtNombre.setText(result.getString(1));
                 txtApellido.setText(result.getString(2));
-                txtNacimiento.setText(result.getString(3));
+                txtNacimiento.setValue(LocalDate.parse(result.getString(3)));
                 txtCargo.setText(result.getString(4));
                 txtSalario.setText(result.getString(5));
                 txtDireccion.setText(result.getString(6));
@@ -121,7 +122,7 @@ public class ConsultaEmpleadosController implements Initializable {
             }
         } catch (SQLException ex) {
             Logger.getLogger(ConsultaEmpleadosController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Registro no encontrado", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Registro no encontrado");
         }
     }
     
@@ -130,7 +131,7 @@ public class ConsultaEmpleadosController implements Initializable {
         txtDpi.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
-        txtNacimiento.setText("");
+        txtNacimiento.setValue(null);
         txtCargo.setText("");
         txtSalario.setText("");
         txtDireccion.setText("");

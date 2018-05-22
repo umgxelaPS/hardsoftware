@@ -15,19 +15,19 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class ClaseCliente {    
     
-    public SimpleIntegerProperty Nit = new SimpleIntegerProperty();
+    public SimpleStringProperty Nit_C = new SimpleStringProperty();
     public SimpleStringProperty nombre = new SimpleStringProperty();
     public SimpleStringProperty apellido= new SimpleStringProperty();
     public SimpleStringProperty direccion= new SimpleStringProperty();
     public SimpleIntegerProperty telefono = new SimpleIntegerProperty();
     
 
-    public Integer getNIt(){
-	return Nit.get();
+    public String getNIt(){
+	return Nit_C.get();
     }
 
-    public void setNit(Integer Nit){
-        this.Nit = new SimpleIntegerProperty(Nit);
+    public void setNit(String Nit){
+        this.Nit_C = new SimpleStringProperty(Nit);
     }
 
     

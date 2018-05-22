@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggin.LogginController">
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginController">
    <children>
       <AnchorPane prefHeight="382.0" prefWidth="366.0" style="-fx-background-color: #1A33D5;">
          <children>
@@ -62,7 +62,7 @@
                   <Image url="@../Imagenes/letrero.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="76.0" layoutY="339.0" text="Olvidé mi contraseña?" textFill="#1a33d5">
+            <Label layoutX="76.0" layoutY="339.0" onMouseClicked="#OlvideContrasenia" text="Olvidé mi contraseña?" textFill="#1a33d5">
                <font>
                   <Font size="14.0" />
                </font>

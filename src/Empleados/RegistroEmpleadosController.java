@@ -24,7 +24,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -62,7 +61,7 @@ public class RegistroEmpleadosController implements Initializable {
     @FXML
     public TextField txtApellido;
     @FXML
-    public TextField txtNacimiento;
+    public DatePicker txtNacimiento;
     @FXML
     public TextField txtCargo;
     @FXML
@@ -101,7 +100,7 @@ public class RegistroEmpleadosController implements Initializable {
         dpi=txtDpi.getText();
         nombre=txtNombre.getText();
         apellido=txtApellido.getText();
-        nacimiento=txtNacimiento.getText();
+        nacimiento=txtNacimiento.getValue().toString();
         cargo=txtCargo.getText();
         salario=txtSalario.getText();
         direccion=txtDireccion.getText();
@@ -127,14 +126,14 @@ public class RegistroEmpleadosController implements Initializable {
             txtDpi.setText("");
             txtNombre.setText("");
             txtApellido.setText("");
-            txtNacimiento.setText("");
+            txtNacimiento.setValue(null);
             txtCargo.setText("");
             txtSalario.setText("");
             txtDireccion.setText("");
             txtTelefono.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(RegistroEmpleadosController.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Eror, Usuario no registrado");
+            JOptionPane.showMessageDialog(null,"Error al guardar el registro");
         }  
     }
     
@@ -143,7 +142,7 @@ public class RegistroEmpleadosController implements Initializable {
         txtDpi.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
-        txtNacimiento.setText("");
+        txtNacimiento.setValue(null);
         txtCargo.setText("");
         txtSalario.setText("");
         txtDireccion.setText("");

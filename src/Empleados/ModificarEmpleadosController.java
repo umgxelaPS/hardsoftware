@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,7 +60,7 @@ public class ModificarEmpleadosController implements Initializable {
     @FXML
     public TextField txtApellido;
     @FXML
-    public TextField txtNacimiento;
+    public DatePicker txtNacimiento;
     @FXML
     public TextField txtCargo;
     @FXML
@@ -107,7 +108,7 @@ public class ModificarEmpleadosController implements Initializable {
             while(result.next()){
                 txtNombre.setText(result.getString(1));
                 txtApellido.setText(result.getString(2));
-                txtNacimiento.setText(result.getString(3));
+                txtNacimiento.setValue(LocalDate.parse(result.getString(3)));
                 txtCargo.setText(result.getString(4));
                 txtSalario.setText(result.getString(5));
                 txtDireccion.setText(result.getString(6));
@@ -115,7 +116,7 @@ public class ModificarEmpleadosController implements Initializable {
             }
         } catch (SQLException ex) {
             Logger.getLogger(ModificarEmpleadosController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Registro no encontrado", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Registro no encontrado");
         }
     }
     
@@ -129,7 +130,7 @@ public class ModificarEmpleadosController implements Initializable {
             
             preparar.setString(1, txtNombre.getText());
             preparar.setString(2, txtApellido.getText());
-            preparar.setString(3, txtNacimiento.getText());
+            preparar.setString(3, txtNacimiento.getValue().toString());
             preparar.setString(4, txtCargo.getText());
             preparar.setString(5, txtSalario.getText());
             preparar.setString(6, txtDireccion.getText());
@@ -142,7 +143,7 @@ public class ModificarEmpleadosController implements Initializable {
             txtDpi.setText("");
             txtNombre.setText("");
             txtApellido.setText("");
-            txtNacimiento.setText("");
+            txtNacimiento.setValue(null);
             txtCargo.setText("");
             txtSalario.setText("");
             txtDireccion.setText("");
@@ -150,6 +151,7 @@ public class ModificarEmpleadosController implements Initializable {
             
         } catch (SQLException ex) {
             Logger.getLogger(ModificarEmpleadosController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Error al modificar el registro");
         }
     }
     @FXML   
@@ -157,7 +159,7 @@ public class ModificarEmpleadosController implements Initializable {
         txtDpi.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
-        txtNacimiento.setText("");
+        txtNacimiento.setValue(null);
         txtCargo.setText("");
         txtSalario.setText("");
         txtDireccion.setText("");

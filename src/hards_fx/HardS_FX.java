@@ -6,7 +6,7 @@
 package hards_fx;
 
 import Clientes.RegistroClientesController;
-import Loggin.LogginController;
+import Login.LoginController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,11 +24,11 @@ public class HardS_FX extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Loggin/F_Loggin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Login/F_Login.fxml"));
         
         stage.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(root);
-        stage.setTitle("Loggin");
+        stage.setTitle("Login");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

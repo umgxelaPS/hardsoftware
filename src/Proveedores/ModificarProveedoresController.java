@@ -147,6 +147,7 @@ public class ModificarProveedoresController implements Initializable {
             
         } catch (SQLException ex) {
             Logger.getLogger(ModificarProveedoresController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Error al modificar el registro");
         }
     }
     

@@ -119,6 +119,7 @@ public class ModificarModoPagoController implements Initializable {
             
         } catch (SQLException ex) {
             Logger.getLogger(ModificarModoPagoController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Error al modificar el registro");
         }
     }
     

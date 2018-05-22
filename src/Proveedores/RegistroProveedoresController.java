@@ -170,7 +170,7 @@ public class RegistroProveedoresController implements Initializable {
             txtTelefono.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(RegistroProveedoresController.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Eror, Usuario no registrado");
+            JOptionPane.showMessageDialog(null,"Error al guardar el registro");
         }  
 
     }

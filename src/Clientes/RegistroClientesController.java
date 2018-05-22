@@ -116,7 +116,7 @@ public class RegistroClientesController implements Initializable {
             txtTelefono.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(RegistroClientesController.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Eror, Usuario no registrado");
+            JOptionPane.showMessageDialog(null,"Error al guardar el registro");
         }  
     }
     

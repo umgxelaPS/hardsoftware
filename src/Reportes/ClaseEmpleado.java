@@ -17,7 +17,7 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class ClaseEmpleado {    
     
-    public SimpleDoubleProperty DPI = new SimpleDoubleProperty();
+    public SimpleStringProperty DPI = new SimpleStringProperty();
     public SimpleStringProperty nombre = new SimpleStringProperty();
     public SimpleStringProperty apellido = new SimpleStringProperty();
     public SimpleStringProperty nacimiento= new SimpleStringProperty();
@@ -27,12 +27,12 @@ public class ClaseEmpleado {
     public SimpleIntegerProperty telefono = new SimpleIntegerProperty();
     
 
-    public Double getDPI(){
+    public String getDPI(){
 	return DPI.get();
     }
 
-    public void setDPI(Double DPI){
-        this.DPI = new SimpleDoubleProperty(DPI);
+    public void setDPI(String DPI){
+        this.DPI = new SimpleStringProperty(DPI);
     }
     
     public String getNombre(){

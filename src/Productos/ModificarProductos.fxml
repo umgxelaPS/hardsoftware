@@ -10,8 +10,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="559.0" prefWidth="481.0" style="-fx-background-color: fffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Productos.ModificarProductosController">
+<AnchorPane id="AnchorPane" prefHeight="578.0" prefWidth="481.0" style="-fx-background-color: fffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Productos.ModificarProductosController">
    <children>
       <GridPane layoutX="38.0" layoutY="25.0" prefHeight="510.0" prefWidth="425.0">
         <columnConstraints>
@@ -99,5 +100,25 @@
             <Image url="@../Imagenes/letrero.jpg" />
          </image>
       </ImageView>
+      <Label layoutX="47.0" layoutY="546.0" text="Nuevo">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="113.0" layoutY="546.0" text="Consultar">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="192.0" layoutY="546.0" text="Editar">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="264.0" layoutY="546.0" text="Regresar">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

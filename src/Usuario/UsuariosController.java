@@ -41,8 +41,6 @@ public class UsuariosController implements Initializable {
      
     //Declaración de Botones
     @FXML
-    private TextField  txtnumusuario;
-    @FXML
     private TextField  txtdpi;
     @FXML
     private TextField  txtusuario;
@@ -86,7 +84,6 @@ public class UsuariosController implements Initializable {
     
     @FXML   
     private void GuardarUsuario(ActionEvent event){
-        numusuario=Integer.parseInt(txtnumusuario.getText());
         dpi=txtdpi.getText();
         usuario=txtusuario.getText();
         contrasenia=txtcontrasenia.getText();
@@ -94,21 +91,19 @@ public class UsuariosController implements Initializable {
         estado=txtestado.getText();
                
         //Guardar Registros en BD
-        sql="INSERT INTO usuario(id_usuario,dpi_empleado,usuario,contraseña,tipo_usuario,estado) VALUES(?,?,?,?,?,?)";
+        sql="INSERT INTO usuario(dpi_empleado,usuario,contraseña,tipo_usuario,estado) VALUES(?,?,?,?,?)";
         
         try {
             preparar = con.prepareStatement(sql);
-            preparar.setInt(1, numusuario);
-            preparar.setString(2,dpi);
-            preparar.setString(3,usuario);
-            preparar.setString(4,contrasenia);
-            preparar.setString(5,rol);
-            preparar.setString(6,estado);
+            preparar.setString(1,dpi);
+            preparar.setString(2,usuario);
+            preparar.setString(3,contrasenia);
+            preparar.setString(4,rol);
+            preparar.setString(5,estado);
             preparar.executeUpdate();
             
             JOptionPane.showMessageDialog(null,"Registro Guardado Exitosamiente ");
             
-           txtnumusuario.setText("");
             txtdpi.setText("");
             txtusuario.setText("");
             txtcontrasenia.setText("");
@@ -117,7 +112,7 @@ public class UsuariosController implements Initializable {
 
         } catch (SQLException ex) {
             Logger.getLogger(UsuariosController.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Eror, Usuario no registrado");
+            JOptionPane.showMessageDialog(null,"Error al guardar el registro ");
         }  
     }
     
@@ -126,7 +121,7 @@ public class UsuariosController implements Initializable {
         node=(Node) event.getSource();
         stage=(Stage) node.getScene().getWindow();
         
-        parent=FXMLLoader.load(getClass().getResource("/Loggin/F_Loggin.fxml"));
+        parent=FXMLLoader.load(getClass().getResource("/Login/F_Login.fxml"));
         
         Scene scene = new Scene(parent);
         stage.setScene(scene);

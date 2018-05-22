@@ -41,7 +41,7 @@ public class ReporteClientesController implements Initializable {
 
         
         //Enlazar columnas con atributos
-        C_Nit.setCellValueFactory(new PropertyValueFactory<ClaseCliente,Number>("Nit"));
+        C_Nit.setCellValueFactory(new PropertyValueFactory<ClaseCliente,String>("Nit_C"));
         nombre.setCellValueFactory(new PropertyValueFactory<ClaseCliente,String>("nombre"));
         apellido.setCellValueFactory(new PropertyValueFactory<ClaseCliente,String>("apellido"));
         direccion.setCellValueFactory(new PropertyValueFactory<ClaseCliente,String>("direccion"));
@@ -59,7 +59,7 @@ public class ReporteClientesController implements Initializable {
     
     //Columnas
     @FXML
-    private TableColumn<ClaseCliente, Number> C_Nit;
+    private TableColumn<ClaseCliente, String> C_Nit;
 
     @FXML
     private TableColumn<ClaseCliente, String> nombre;
@@ -93,7 +93,7 @@ public class ReporteClientesController implements Initializable {
             result=con.createStatement().executeQuery(query);
             while(result.next()){
                 ClaseCliente cliente = new ClaseCliente();
-                cliente.Nit.set(result.getInt("nit"));
+                cliente.Nit_C.set(result.getString("nit"));
                 cliente.nombre.set(result.getString("nombre"));
                 cliente.apellido.set(result.getString("apellido"));
                 cliente.direccion.set(result.getString("direccion"));

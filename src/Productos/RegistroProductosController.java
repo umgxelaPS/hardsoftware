@@ -153,7 +153,7 @@ public class RegistroProductosController implements Initializable {
             txtCantidad.clear();
         } catch (SQLException ex) {
             Logger.getLogger(RegistroProductosController.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Eror, Registro no Guardado");
+            JOptionPane.showMessageDialog(null,"Error al guardar el registro");
         }
 
     }

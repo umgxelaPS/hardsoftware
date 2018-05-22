@@ -172,7 +172,7 @@ public class EliminarProductosController implements Initializable {
             
         } catch (SQLException ex) {
             Logger.getLogger(EliminarProductosController.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Registro no eliminado", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Error al eliminar el registro");
         }
     
     }

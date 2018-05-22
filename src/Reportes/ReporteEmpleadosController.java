@@ -41,7 +41,7 @@ public class ReporteEmpleadosController implements Initializable {
 
         
         //Enlazar columnas con atributos
-        c_dpi.setCellValueFactory(new PropertyValueFactory<ClaseEmpleado,Double>("DPI"));
+        c_dpi.setCellValueFactory(new PropertyValueFactory<ClaseEmpleado,String>("DPI"));
         nombre.setCellValueFactory(new PropertyValueFactory<ClaseEmpleado,String>("nombre"));
         apellido.setCellValueFactory(new PropertyValueFactory<ClaseEmpleado,String>("apellido"));
         nacimiento.setCellValueFactory(new PropertyValueFactory<ClaseEmpleado,String>("nacimiento"));
@@ -63,7 +63,7 @@ public class ReporteEmpleadosController implements Initializable {
     
     //Columnas
     @FXML
-    private TableColumn<ClaseEmpleado, Double> c_dpi;
+    private TableColumn<ClaseEmpleado, String> c_dpi;
 
     @FXML
     private TableColumn<ClaseEmpleado, String> nombre;
@@ -102,7 +102,7 @@ public class ReporteEmpleadosController implements Initializable {
             result=con.createStatement().executeQuery(query);
             while(result.next()){
                 ClaseEmpleado empleado = new ClaseEmpleado();
-                empleado.DPI.set(result.getDouble("dpi"));
+                empleado.DPI.set(result.getString("dpi"));
                 empleado.nombre.set(result.getString("nombre"));
                 empleado.apellido.set(result.getString("apellido"));
                 empleado.nacimiento.set(result.getString("fecha_nacimiento"));

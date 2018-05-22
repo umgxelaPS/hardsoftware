@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Loggin;
+package Login;
 
 import BD.ConexionBD;
 import java.io.IOException;
@@ -24,6 +24,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -32,7 +33,7 @@ import javax.swing.JOptionPane;
  *
  * @author DAVID
  */
-public class LogginController implements Initializable {
+public class LoginController implements Initializable {
 
     @FXML
     private Button cerrar;
@@ -110,7 +111,7 @@ public class LogginController implements Initializable {
             }
             
         } catch (SQLException ex) {
-            //Logger.getLogger(LogginController.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "USUARIO NO REGISTRADO", "Error", JOptionPane.WARNING_MESSAGE);
         }
         
@@ -118,10 +119,25 @@ public class LogginController implements Initializable {
         
     }
     
+    @FXML
+    void OlvideContrasenia(MouseEvent event) throws IOException {
+        node=(Node) event.getSource();
+        stage=(Stage) node.getScene().getWindow();
+        
+        parent=FXMLLoader.load(getClass().getResource("/Login/OlvidoContrasenia.fxml"));
+        
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Olvidaste Contraseña");
+        stage.show();
+
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     } 
+    
     
 }

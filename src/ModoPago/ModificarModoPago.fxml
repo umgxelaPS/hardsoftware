@@ -9,8 +9,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="307.0" prefWidth="493.0" style="-fx-background-color: fff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ModoPago.ModificarModoPagoController">
+<AnchorPane id="AnchorPane" prefHeight="327.0" prefWidth="493.0" style="-fx-background-color: fff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ModoPago.ModificarModoPagoController">
    <children>
       <GridPane layoutX="26.0" layoutY="23.0" prefHeight="263.0" prefWidth="447.0">
         <columnConstraints>
@@ -79,5 +80,25 @@
             </ImageView>
          </children>
       </GridPane>
+      <Label layoutX="35.0" layoutY="295.0" text="Nuevo">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="114.0" layoutY="295.0" text="Consultar">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="209.0" layoutY="295.0" text="Editar">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="303.0" layoutY="295.0" text="Regresar">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
