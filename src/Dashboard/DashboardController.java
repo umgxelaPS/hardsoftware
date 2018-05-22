@@ -163,8 +163,17 @@ public class DashboardController implements Initializable {
     }
     
     @FXML
-    void btnVentas(ActionEvent event) {
+    void btnVentas(ActionEvent event) throws IOException {
+     node=(Node) event.getSource();
+        stage=(Stage) node.getScene().getWindow();
         
+        parent=FXMLLoader.load(getClass().getResource("/Facturacion/puntodeventa.fxml"));
+        
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Ventas");
+        stage.show();    
     }
 
     @FXML
@@ -177,6 +186,7 @@ public class DashboardController implements Initializable {
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.centerOnScreen();
+
         stage.setTitle("Login");
         stage.show();
     }
