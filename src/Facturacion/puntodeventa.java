@@ -158,13 +158,13 @@ public class puntodeventa implements Initializable {
 
     public void Informacion() {
         // PRODUCTLIST = FXCollections.observableArrayList();
-
+ 
         try {
             String query = "SELECT * FROM producto";
             result = con.createStatement().executeQuery(query);
             while (result.next()) {
                 ClaseProducto producto = new ClaseProducto();
-                producto.idProducto.set(result.getInt("id_producto"));
+                producto.idProducto.set(result.getString("id_producto"));
                 producto.idProveedor.set(result.getInt("id_proveedor"));
                 producto.nombre.set(result.getString("nombre"));
                 producto.marca.set(result.getString("marca"));

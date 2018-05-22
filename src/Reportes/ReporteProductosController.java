@@ -41,7 +41,7 @@ public class ReporteProductosController implements Initializable {
 
         
         //Enlazar columnas con atributos
-        id_producto.setCellValueFactory(new PropertyValueFactory<ClaseProducto,Number>("idProducto"));
+        id_producto.setCellValueFactory(new PropertyValueFactory<ClaseProducto,String>("idProducto"));
         id_proveedor.setCellValueFactory(new PropertyValueFactory<ClaseProducto,Number>("idProveedor"));
         nombre.setCellValueFactory(new PropertyValueFactory<ClaseProducto,String>("nombre"));
         marca.setCellValueFactory(new PropertyValueFactory<ClaseProducto,String>("marca"));
@@ -63,7 +63,7 @@ public class ReporteProductosController implements Initializable {
     
     //Columnas
     @FXML
-    private TableColumn<ClaseProducto, Number> id_producto;
+    private TableColumn<ClaseProducto, String> id_producto;
     @FXML
     private TableColumn<ClaseProducto, Number> id_proveedor;
     @FXML
@@ -95,7 +95,7 @@ public class ReporteProductosController implements Initializable {
             result=con.createStatement().executeQuery(query);
             while(result.next()){
                 ClaseProducto producto = new ClaseProducto();
-                producto.idProducto.set(result.getInt("id_producto"));
+                producto.idProducto.set(result.getString("id_producto"));
                 producto.idProveedor.set(result.getInt("id_proveedor"));
                 producto.nombre.set(result.getString("nombre"));
                 producto.marca.set(result.getString("marca"));

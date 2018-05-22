@@ -52,6 +52,9 @@ public class RegistroProductosController implements Initializable {
     ObservableList<String> Marcas = FXCollections.observableArrayList("Samsung","Dell","HP","Cannon","Epson","MicroSoft");
             
     @FXML
+    private TextField txtProducto;
+    
+    @FXML
     private TextField txtProveedor;
 
     @FXML
@@ -100,6 +103,7 @@ public class RegistroProductosController implements Initializable {
     PreparedStatement preparar;
     
     //VariablesGlobales
+    String idProducto;
     int idProveedor;
     String nombre;
     String marca;
@@ -119,6 +123,7 @@ public class RegistroProductosController implements Initializable {
     
     @FXML
     void btnGuardar(ActionEvent event) {
+        idProducto=txtProducto.getText();
         idProveedor=Integer.parseInt(txtProveedor.getText());
         nombre=txtNombre.getText();
         marca=comboMarca.getValue().toString();
@@ -129,21 +134,23 @@ public class RegistroProductosController implements Initializable {
         
         
         //Guardar Registros en BD
-        sql="INSERT INTO producto(id_proveedor,nombre,marca,modelo,precio_compra,precio_venta,cantidad) VALUES(?,?,?,?,?,?,?)";
+        sql="INSERT INTO producto(id_producto,id_proveedor,nombre,marca,modelo,precio_compra,precio_venta,cantidad) VALUES(?,?,?,?,?,?,?,?)";
         
         try {
             preparar = con.prepareStatement(sql);
-            preparar.setInt(1, idProveedor);
-            preparar.setString(2, nombre);
-            preparar.setString(3, marca);
-            preparar.setString(4, modelo);
-            preparar.setFloat(5,precio_compra);
-            preparar.setFloat(6,precio_venta);
-            preparar.setInt(7,cantidad);
+            preparar.setString(1, idProducto);
+            preparar.setInt(2, idProveedor);
+            preparar.setString(3, nombre);
+            preparar.setString(4, marca);
+            preparar.setString(5, modelo);
+            preparar.setFloat(6,precio_compra);
+            preparar.setFloat(7,precio_venta);
+            preparar.setInt(8,cantidad);
             preparar.executeUpdate();
             
             JOptionPane.showMessageDialog(null,"Registro Guardado");
             
+            txtProducto.clear();
             txtProveedor.clear();
             txtNombre.clear();
             comboMarca.setValue(null);
@@ -160,6 +167,7 @@ public class RegistroProductosController implements Initializable {
 
     @FXML
     void btnLimpiar(ActionEvent event) {
+        txtProducto.clear();
         txtProveedor.clear();
         txtNombre.clear();
         comboMarca.setValue(null);

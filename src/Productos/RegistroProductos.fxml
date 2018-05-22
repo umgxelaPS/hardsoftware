@@ -25,7 +25,9 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -39,21 +41,23 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label minWidth="-Infinity" text="ID Proveedor :" GridPane.rowIndex="1" />
-            <JFXTextField fx:id="txtProveedor" maxWidth="425.0" minWidth="425.0" prefHeight="31.0" prefWidth="425.0" GridPane.rowIndex="2" />
-            <Label minWidth="-Infinity" text="Nombre Producto :" GridPane.rowIndex="3" />
-            <JFXTextField fx:id="txtNombre" maxWidth="425.0" minWidth="425.0" prefHeight="31.0" prefWidth="425.0" GridPane.rowIndex="4" />
-            <Label text="Marca :" GridPane.rowIndex="5" />
-            <JFXComboBox fx:id="comboMarca" minHeight="-Infinity" minWidth="200.0" prefHeight="25.0" prefWidth="187.0" promptText="Eliga la marca" GridPane.rowIndex="6" />
-            <Label text="Modelo :" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <JFXTextField fx:id="txtModelo" maxHeight="-Infinity" maxWidth="425.0" minWidth="211.0" prefHeight="31.0" prefWidth="222.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Label minWidth="-Infinity" text="Precio Compra :" GridPane.rowIndex="7" />
-            <JFXTextField fx:id="txtPrecioCompra" maxHeight="-Infinity" maxWidth="425.0" minHeight="-Infinity" minWidth="200.0" prefHeight="31.0" prefWidth="247.0" GridPane.rowIndex="8" />
-            <Label minWidth="-Infinity" text="Precio Venta :" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-            <JFXTextField fx:id="txtPrecioVenta" maxWidth="425.0" minHeight="-Infinity" minWidth="211.0" prefHeight="31.0" prefWidth="193.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-            <Label text="Cantidad :" GridPane.rowIndex="9" />
-            <JFXTextField fx:id="txtCantidad" maxWidth="425.0" minWidth="425.0" prefHeight="31.0" prefWidth="425.0" GridPane.rowIndex="10" />
-            <JFXButton fx:id="btnLimpiar" contentDisplay="GRAPHIC_ONLY" onAction="#btnLimpiar" text="Limpiar" GridPane.rowIndex="12">
+            <Label minWidth="-Infinity" text="ID Producto:" GridPane.rowIndex="1" />
+            <JFXTextField fx:id="txtProducto" maxWidth="424.0" minWidth="424.0" prefHeight="31.0" prefWidth="424.0" GridPane.rowIndex="2" />
+            <Label minWidth="-Infinity" text="ID Proveedor :" GridPane.rowIndex="3" />
+            <JFXTextField fx:id="txtProveedor" maxWidth="425.0" minWidth="425.0" prefHeight="31.0" prefWidth="425.0" GridPane.rowIndex="4" />
+            <Label minWidth="-Infinity" text="Nombre Producto :" GridPane.rowIndex="5" />
+            <JFXTextField fx:id="txtNombre" maxWidth="425.0" minWidth="425.0" prefHeight="31.0" prefWidth="425.0" GridPane.rowIndex="6" />
+            <Label text="Marca :" GridPane.rowIndex="7" />
+            <JFXComboBox fx:id="comboMarca" minHeight="-Infinity" minWidth="200.0" prefHeight="25.0" prefWidth="187.0" promptText="Eliga la marca" GridPane.rowIndex="8" />
+            <Label text="Modelo :" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <JFXTextField fx:id="txtModelo" maxHeight="-Infinity" maxWidth="425.0" minWidth="211.0" prefHeight="31.0" prefWidth="222.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <Label minWidth="-Infinity" text="Precio Compra :" GridPane.rowIndex="9" />
+            <JFXTextField fx:id="txtPrecioCompra" maxHeight="-Infinity" maxWidth="425.0" minHeight="-Infinity" minWidth="200.0" prefHeight="31.0" prefWidth="247.0" GridPane.rowIndex="10" />
+            <Label minWidth="-Infinity" text="Precio Venta :" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+            <JFXTextField fx:id="txtPrecioVenta" maxWidth="425.0" minHeight="-Infinity" minWidth="211.0" prefHeight="31.0" prefWidth="193.0" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+            <Label text="Cantidad :" GridPane.rowIndex="11" />
+            <JFXTextField fx:id="txtCantidad" maxWidth="425.0" minWidth="425.0" prefHeight="31.0" prefWidth="425.0" GridPane.rowIndex="12" />
+            <JFXButton fx:id="btnLimpiar" contentDisplay="GRAPHIC_ONLY" onAction="#btnLimpiar" text="Limpiar" GridPane.rowIndex="14">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -62,7 +66,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnGuardar" contentDisplay="GRAPHIC_ONLY" onAction="#btnGuardar" text="Guardar" GridPane.columnIndex="1" GridPane.rowIndex="12">
+            <JFXButton fx:id="btnGuardar" contentDisplay="GRAPHIC_ONLY" onAction="#btnGuardar" text="Guardar" GridPane.columnIndex="1" GridPane.rowIndex="14">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -71,7 +75,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnEditar" contentDisplay="GRAPHIC_ONLY" onAction="#btnEditar" text="Editar" GridPane.columnIndex="2" GridPane.rowIndex="12">
+            <JFXButton fx:id="btnEditar" contentDisplay="GRAPHIC_ONLY" onAction="#btnEditar" text="Editar" GridPane.columnIndex="2" GridPane.rowIndex="14">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -80,7 +84,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnConsultar" contentDisplay="GRAPHIC_ONLY" onAction="#btnConsultar" text="Consultar" GridPane.columnIndex="3" GridPane.rowIndex="12">
+            <JFXButton fx:id="btnConsultar" contentDisplay="GRAPHIC_ONLY" onAction="#btnConsultar" text="Consultar" GridPane.columnIndex="3" GridPane.rowIndex="14">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -89,7 +93,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnEliminar" contentDisplay="GRAPHIC_ONLY" onAction="#btnEliminar" text="Eliminar" GridPane.columnIndex="4" GridPane.rowIndex="12">
+            <JFXButton fx:id="btnEliminar" contentDisplay="GRAPHIC_ONLY" onAction="#btnEliminar" text="Eliminar" GridPane.columnIndex="4" GridPane.rowIndex="14">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>

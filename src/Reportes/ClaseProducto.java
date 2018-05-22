@@ -16,7 +16,7 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class ClaseProducto {    
     
-    public SimpleIntegerProperty idProducto = new SimpleIntegerProperty();
+    public SimpleStringProperty idProducto = new SimpleStringProperty();
     public SimpleIntegerProperty idProveedor = new SimpleIntegerProperty();
     public SimpleStringProperty nombre = new SimpleStringProperty();
     public SimpleStringProperty marca= new SimpleStringProperty();
@@ -26,12 +26,12 @@ public class ClaseProducto {
     public SimpleIntegerProperty cantidad = new SimpleIntegerProperty();
     
 
-    public Integer getIdProducto(){
+    public String getIdProducto(){
 	return idProducto.get();
     }
 
-    public void setIdProducto(Integer idProducto){
-        this.idProducto = new SimpleIntegerProperty(idProducto);
+    public void setIdProducto(String idProducto){
+        this.idProducto = new SimpleStringProperty(idProducto);
     }
     
     public Integer getIdProveedor(){
