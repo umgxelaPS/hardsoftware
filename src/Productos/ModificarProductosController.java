@@ -44,13 +44,14 @@ public class ModificarProductosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ComboBox();   
         comboMarca.setValue(null);
         comboMarca.setItems(Marcas);
     }    
     
     
     
-    ObservableList<String> Marcas = FXCollections.observableArrayList("Samsung","Dell","HP","Cannon","Epson","MicroSoft");
+    ObservableList Marcas = FXCollections.observableArrayList();
             
     @FXML
     private TextField txtID;
@@ -113,6 +114,25 @@ public class ModificarProductosController implements Initializable {
     Stage stage;
     Parent parent;
     Scene root; 
+    
+    //Llenar combobox
+    
+    public void ComboBox(){
+        String consulta="SELECT nombre FROM marca";
+        try {
+            preparar=con.prepareStatement(consulta);
+            result=preparar.executeQuery();
+            
+            while(result.next()){
+                Marcas.add(result.getString("nombre"));
+            }
+            preparar.close();
+            result.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroProductosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
     @FXML
     void btnConsultar(ActionEvent event) {

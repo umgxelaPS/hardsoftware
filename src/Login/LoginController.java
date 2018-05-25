@@ -46,34 +46,35 @@ public class LoginController implements Initializable {
 
     @FXML
     private PasswordField txtpass;
-    @FXML   
-    private void Cerrar(ActionEvent event){
-       System.exit(0);
+
+    @FXML
+    private void Cerrar(ActionEvent event) {
+        System.exit(0);
     }
-    
+
     //Variables para Cambio de escenas
     Node node;
     Stage stage;
     Parent parent;
     Scene root;
-    
+
     @FXML
-    private void btnUsuario(ActionEvent event) throws IOException{
-        node=(Node) event.getSource();
-        stage=(Stage) node.getScene().getWindow();
-        
-        parent=FXMLLoader.load(getClass().getResource("/Usuario/F_Usuarios.fxml"));
-        
+    private void btnUsuario(ActionEvent event) throws IOException {
+        node = (Node) event.getSource();
+        stage = (Stage) node.getScene().getWindow();
+
+        parent = FXMLLoader.load(getClass().getResource("/Usuario/F_Usuarios.fxml"));
+
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setTitle("Registro Usuarios");
         stage.show();
-        
+
     }
-     //Instancia Conexión BD
+    //Instancia Conexión BD
     ConexionBD conectar = new ConexionBD();
-    Connection con=conectar.conexion();
+    Connection con = conectar.conexion();
     PreparedStatement preparar;
     ResultSet result;
     //String para la consulta
@@ -82,50 +83,51 @@ public class LoginController implements Initializable {
     String apellido;
     String direccion;
     int telefono;
-    
 
     @FXML
-    private void btnLoggin(ActionEvent event) throws IOException{
-            String capturarol="";
-        String sql="SELECT * FROM usuario WHERE usuario='"+txtusuario.getText()+"' && contraseña='"+txtpass.getText()+"'";
+    private void btnLoggin(ActionEvent event) throws IOException {
+        String capturadol = "";
+        String capturado2 = "";
+        String sql = "SELECT * FROM usuario WHERE usuario='" + txtusuario.getText() + "' && contraseña='" + txtpass.getText() + "'";
         try {
-            
-            Statement st =con.createStatement();
-            ResultSet rs= st.executeQuery(sql);
-            while (rs.next()){
-            capturarol=rs.getString("tipo_usuario");
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                capturadol = rs.getString("tipo_usuario");
+                capturado2 = rs.getString("estado");
             }
-            if (capturarol.equals("vendedor")){
-                node=(Node) event.getSource();
-        stage=(Stage) node.getScene().getWindow();
-        
-        parent=FXMLLoader.load(getClass().getResource("/Dashboard/Dashboard.fxml"));
-        
-        Scene scene = new Scene(parent);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("Dashboard");
-        stage.show();
-            }else{
-            JOptionPane.showMessageDialog(null, "USUARIO NO REGISTRADO", "Error", JOptionPane.WARNING_MESSAGE);
+            if (capturadol.equals("vendedor")) {
+                if (capturado2.equals("activo")) {
+                    node = (Node) event.getSource();
+                    stage = (Stage) node.getScene().getWindow();
+                    parent = FXMLLoader.load(getClass().getResource("/Dashboard/Dashboard.fxml"));
+                    Scene scene = new Scene(parent);
+                    stage.setScene(scene);
+                    stage.centerOnScreen();
+                    stage.setTitle("Dashboard");
+                    stage.show();
+                }else{
+                JOptionPane.showMessageDialog(null, "USUARIO SIN PRIVILEGIOS DE ACCESO", "Error", JOptionPane.WARNING_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "USUARIO NO REGISTRADO", "Error", JOptionPane.WARNING_MESSAGE);
             }
-            
+
         } catch (SQLException ex) {
             //Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "USUARIO NO REGISTRADO", "Error", JOptionPane.WARNING_MESSAGE);
         }
-        
-        
-        
+
     }
-    
+
     @FXML
     void OlvideContrasenia(MouseEvent event) throws IOException {
-        node=(Node) event.getSource();
-        stage=(Stage) node.getScene().getWindow();
-        
-        parent=FXMLLoader.load(getClass().getResource("/Login/OlvidoContrasenia.fxml"));
-        
+        node = (Node) event.getSource();
+        stage = (Stage) node.getScene().getWindow();
+
+        parent = FXMLLoader.load(getClass().getResource("/Login/OlvidoContrasenia.fxml"));
+
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.centerOnScreen();
@@ -133,11 +135,10 @@ public class LoginController implements Initializable {
         stage.show();
 
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    } 
-    
-    
+    }
+
 }

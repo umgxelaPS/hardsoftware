@@ -53,11 +53,10 @@ public class UsuariosController implements Initializable {
     @FXML
     private Button volver;
     @FXML
-    private Button nuevo;
+    private Button btnnuevo;
     @FXML  
     public Button btnGuardar;
-    @FXML
-    private Button editar;
+
     @FXML
     private Button eliminar;
     @FXML
@@ -116,6 +115,15 @@ public class UsuariosController implements Initializable {
         }  
     }
     
+    @FXML   
+    private void Nuevo(ActionEvent event){
+        txtdpi.setText("");
+        txtusuario.setText("");
+        txtcontrasenia.setText("");
+        txtrol.setText("");
+        txtestado.setText("");
+    }
+    
     @FXML
     private void btnVolver(ActionEvent event) throws IOException{
         node=(Node) event.getSource();
@@ -128,6 +136,38 @@ public class UsuariosController implements Initializable {
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.setTitle("Loggin");
+        stage.show();
+        
+    }
+    
+    @FXML
+    private void btnConsultar(ActionEvent event)throws IOException{
+        node=(Node) event.getSource();
+        stage=(Stage) node.getScene().getWindow();
+        
+        parent=FXMLLoader.load(getClass().getResource("/Usuario/ConsultaUsuario.fxml"));
+        
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.setTitle("Consultar Usuario");
+        stage.show();
+        
+    }
+    
+    @FXML
+    private void btnDesactivar(ActionEvent event)throws IOException{
+        node=(Node) event.getSource();
+        stage=(Stage) node.getScene().getWindow();
+        
+        parent=FXMLLoader.load(getClass().getResource("/Usuario/DesactivarUsuario.fxml"));
+        
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.setTitle("Desactivar Usuario");
         stage.show();
         
     }

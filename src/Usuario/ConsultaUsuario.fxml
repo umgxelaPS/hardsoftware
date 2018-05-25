@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -12,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="538.0" prefWidth="460.0" style="-fx-background-color: fff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Usuario.UsuariosController">
+<AnchorPane id="AnchorPane" prefHeight="538.0" prefWidth="460.0" style="-fx-background-color: fff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Usuario.ConsultaUsuarioController">
    <children>
       <GridPane layoutX="29.0" layoutY="14.0" prefHeight="486.0" prefWidth="431.0">
         <columnConstraints>
@@ -43,10 +42,10 @@
          <children>
             <Label text="DPI :" GridPane.rowIndex="4" />
             <JFXTextField fx:id="txtdpi" maxWidth="434.0" minWidth="419.0" prefHeight="31.0" prefWidth="418.0" GridPane.rowIndex="5" />
-            <Label text="Usuario :" GridPane.rowIndex="6" />
-            <JFXTextField fx:id="txtusuario" maxWidth="434.0" minWidth="419.0" prefHeight="31.0" prefWidth="419.0" GridPane.rowIndex="7" />
-            <Label text="Contraseña :" GridPane.rowIndex="8" />
-            <JFXPasswordField fx:id="txtcontrasenia" maxWidth="413.0" minWidth="413.0" prefHeight="31.0" prefWidth="413.0" GridPane.rowIndex="9" />
+            <Label text="Id Usuario :" GridPane.rowIndex="6" />
+            <JFXTextField fx:id="txtid" maxWidth="434.0" minWidth="419.0" prefHeight="31.0" prefWidth="419.0" GridPane.rowIndex="7" />
+            <Label text="Usuario :" GridPane.rowIndex="8" />
+            <JFXTextField fx:id="txtusuario" maxWidth="434.0" minWidth="419.0" prefHeight="31.0" prefWidth="419.0" GridPane.rowIndex="9" />
             <Label text="Rol :" GridPane.rowIndex="10" />
             <JFXTextField fx:id="txtrol" maxWidth="417.0" minWidth="419.0" prefHeight="31.0" prefWidth="417.0" GridPane.rowIndex="11" />
             <Label text="Estado :" GridPane.rowIndex="12" />
@@ -59,28 +58,11 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton fx:id="btnGuardar" contentDisplay="GRAPHIC_ONLY" onAction="#GuardarUsuario" GridPane.columnIndex="1" GridPane.rowIndex="15">
-               <graphic>
-                  <ImageView fitHeight="43.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Imagenes/if_Save-as_85541.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
             <JFXButton fx:id="buscar" contentDisplay="GRAPHIC_ONLY" onAction="#btnConsultar" GridPane.columnIndex="2" GridPane.rowIndex="15">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Imagenes/if_magnifyingglass_1055031.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="eliminar" contentDisplay="GRAPHIC_ONLY" onAction="#btnDesactivar" GridPane.columnIndex="3" GridPane.rowIndex="15">
-               <graphic>
-                  <ImageView fitHeight="73.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Imagenes/if_edit-file_85307.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -105,17 +87,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="119.0" layoutY="502.0" text="Guardar">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
       <Label layoutX="201.0" layoutY="502.0" text="Consultar">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="292.0" layoutY="502.0" text="Activar/Desactivar">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1060.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.DashboardController">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="658.0" prefWidth="1060.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.DashboardController">
    <children>
       <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1271.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -89,6 +89,21 @@
                      <viewport>
                         <Rectangle2D />
                      </viewport>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="btnMarca" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#btnMarca" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Marca" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/if_logo_brand_brands_logos_android_1916089.png" />
+                     </image>
                   </ImageView>
                </graphic>
                <padding>
