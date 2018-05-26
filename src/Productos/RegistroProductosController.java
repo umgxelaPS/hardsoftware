@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,14 +44,13 @@ public class RegistroProductosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ComboBox();        
         comboMarca.setValue(null);
         comboMarca.setItems(Marcas);
     }    
+              
+    ObservableList Marcas = FXCollections.observableArrayList();
     
-    
-    
-    ObservableList<String> Marcas = FXCollections.observableArrayList("Samsung","Dell","HP","Cannon","Epson","MicroSoft");
-            
     @FXML
     private TextField txtProducto;
     
@@ -101,6 +101,7 @@ public class RegistroProductosController implements Initializable {
     ConexionBD conectar = new ConexionBD();
     Connection con=conectar.conexion();
     PreparedStatement preparar;
+    ResultSet result;
     
     //VariablesGlobales
     String idProducto;
@@ -120,6 +121,25 @@ public class RegistroProductosController implements Initializable {
     Stage stage;
     Parent parent;
     Scene root; 
+    
+    //Llenar combobox
+    
+    public void ComboBox(){
+        String consulta="SELECT nombre FROM marca";
+        try {
+            preparar=con.prepareStatement(consulta);
+            result=preparar.executeQuery();
+            
+            while(result.next()){
+                Marcas.add(result.getString("nombre"));
+            }
+            preparar.close();
+            result.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroProductosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
     @FXML
     void btnGuardar(ActionEvent event) {

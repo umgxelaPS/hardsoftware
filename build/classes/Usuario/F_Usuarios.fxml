@@ -51,7 +51,7 @@
             <JFXTextField fx:id="txtrol" maxWidth="417.0" minWidth="419.0" prefHeight="31.0" prefWidth="417.0" GridPane.rowIndex="11" />
             <Label text="Estado :" GridPane.rowIndex="12" />
             <JFXTextField fx:id="txtestado" maxWidth="476.0" minWidth="419.0" prefHeight="31.0" prefWidth="419.0" GridPane.rowIndex="13" />
-            <JFXButton contentDisplay="GRAPHIC_ONLY" GridPane.rowIndex="15">
+            <JFXButton fx:id="btnnuevo" contentDisplay="GRAPHIC_ONLY" onAction="#Nuevo" GridPane.rowIndex="15">
                <graphic>
                   <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -67,20 +67,20 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" GridPane.columnIndex="2" GridPane.rowIndex="15">
+            <JFXButton fx:id="buscar" contentDisplay="GRAPHIC_ONLY" onAction="#btnConsultar" GridPane.columnIndex="2" GridPane.rowIndex="15">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Imagenes/if_edit-file_85307.png" />
+                        <Image url="@../Imagenes/if_magnifyingglass_1055031.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" GridPane.columnIndex="3" GridPane.rowIndex="15">
+            <JFXButton fx:id="eliminar" contentDisplay="GRAPHIC_ONLY" onAction="#btnDesactivar" GridPane.columnIndex="3" GridPane.rowIndex="15">
                <graphic>
                   <ImageView fitHeight="73.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Imagenes/if_edit-delete_23231.png" />
+                        <Image url="@../Imagenes/if_edit-file_85307.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -110,12 +110,12 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="208.0" layoutY="502.0" text="Editar">
+      <Label layoutX="201.0" layoutY="502.0" text="Consultar">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="292.0" layoutY="502.0" text="Eliminar">
+      <Label layoutX="292.0" layoutY="502.0" text="Activar/Desactivar">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

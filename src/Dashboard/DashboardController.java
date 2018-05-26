@@ -175,6 +175,20 @@ public class DashboardController implements Initializable {
         stage.setTitle("Ventas");
         stage.show();    
     }
+    
+    @FXML
+    void btnMarca(ActionEvent event) throws IOException {
+     node=(Node) event.getSource();
+        stage=(Stage) node.getScene().getWindow();
+        
+        parent=FXMLLoader.load(getClass().getResource("/Marca/RegistroMarca.fxml"));
+        
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Ventas");
+        stage.show();    
+    }
 
     @FXML
     void btnSalir(ActionEvent event) throws IOException {

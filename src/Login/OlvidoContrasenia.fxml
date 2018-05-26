@@ -11,25 +11,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="510.0" style="-fx-background-color: fffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.OlvidoContraseniaController">
    <children>
-      <Label layoutX="42.0" layoutY="100.0" text="DPI:" />
-      <JFXTextField fx:id="txtDpi" layoutX="42.0" layoutY="117.0" maxWidth="434.0" minWidth="419.0" prefHeight="31.0" prefWidth="418.0" />
-      <Label layoutX="53.0" layoutY="183.0" text="Nueva Contraseña:" />
-      <JFXButton fx:id="btnbuscar" contentDisplay="GRAPHIC_ONLY" layoutX="222.0" layoutY="285.0" onAction="#ConsultaryModificar">
-         <graphic>
-            <ImageView fitHeight="51.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Imagenes/if_Save-as_85541.png" />
-               </image>
-            </ImageView>
-         </graphic></JFXButton>
-      <JFXButton fx:id="volver" contentDisplay="GRAPHIC_ONLY" layoutX="436.0" layoutY="8.0" onAction="#btnVolver" prefHeight="51.0" prefWidth="45.0" text="REGRESAR">
-         <graphic>
-            <ImageView fitHeight="98.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Imagenes/if_back_23191.png" />
-               </image>
-            </ImageView>
-         </graphic></JFXButton>
       <ImageView fitHeight="19.0" fitWidth="131.0" layoutX="190.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagenes/letrero.jpg" />
@@ -39,10 +20,29 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
+      <Label layoutX="42.0" layoutY="100.0" text="DPI:" />
+      <JFXTextField fx:id="txtDpi" layoutX="42.0" layoutY="117.0" maxWidth="434.0" minWidth="419.0" prefHeight="31.0" prefWidth="418.0" />
+      <Label layoutX="53.0" layoutY="183.0" text="Nueva Contraseña:" />
       <JFXPasswordField fx:id="txtcontrasenia" layoutX="42.0" layoutY="206.0" maxWidth="408.0" minWidth="419.0" prefHeight="31.0" prefWidth="418.0" />
+      <JFXButton fx:id="btnbuscar" contentDisplay="GRAPHIC_ONLY" layoutX="222.0" layoutY="285.0" onAction="#ConsultaryModificar">
+         <graphic>
+            <ImageView fitHeight="51.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/if_Save-as_85541.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
       <Label layoutX="231.0" layoutY="344.0" text="Guardar">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
+      <JFXButton fx:id="volver" contentDisplay="GRAPHIC_ONLY" layoutX="436.0" layoutY="8.0" onAction="#btnVolver" prefHeight="51.0" prefWidth="45.0" text="REGRESAR">
+         <graphic>
+            <ImageView fitHeight="98.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/if_back_23191.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
    </children>
 </AnchorPane>
