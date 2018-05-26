@@ -172,6 +172,7 @@ public class puntodeventa implements Initializable {
                 producto.PrecioC.set(result.getFloat("precio_compra"));
                 producto.PrecioV.set(result.getFloat("precio_venta"));
                 producto.cantidad.set(result.getInt("cantidad"));
+                //String
                 PRODUCTLIST.add(producto);
             }
             productTableView.setItems(PRODUCTLIST);
@@ -311,9 +312,14 @@ public class puntodeventa implements Initializable {
                     String lowerCaseFilter = newValue.toLowerCase();
                     if (producto.getNombre().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (producto.getMarca().toLowerCase().contains(lowerCaseFilter)) {
+                    }else if(producto.getIdProducto().toLowerCase().contains(lowerCaseFilter)){
                         return true;
                     }
+                    else if (producto.getMarca().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    }
+                    
+                    
                     return false;
                 });
             });
