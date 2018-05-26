@@ -1,7 +1,7 @@
 package Facturacion;
 
 public class articulo {
-
+    private String idItem;
     private String itemName;
     private double unitPrice;
     private double quantity;
@@ -10,11 +10,20 @@ public class articulo {
     public articulo() {
     }
 
-    public articulo(String itemName, double unitPrice, double quantity, double total) {
+    public articulo(String idItem,String itemName, double unitPrice, double quantity, double total) {
+        this.idItem=idItem;
         this.itemName = itemName;
         this.unitPrice = unitPrice;
         this.quantity = quantity;
         this.total = total;
+    }
+
+    public String getIdItem() {
+        return idItem;
+    }
+
+    public void setIdItem(String idItem) {
+        this.idItem = idItem;
     }
 
     public String getItemName() {

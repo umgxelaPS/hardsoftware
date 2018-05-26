@@ -121,6 +121,16 @@ public class puntodeventa implements Initializable {
     int cantidad;
     //Sentencia SQL
     String consultar;
+    private String idProducto;
+
+    public String getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(String idProducto) {
+        this.idProducto = idProducto;
+    }
+    
 
     /**
      * Initializes the controller class.
@@ -158,7 +168,7 @@ public class puntodeventa implements Initializable {
 
     public void Informacion() {
         // PRODUCTLIST = FXCollections.observableArrayList();
- PRODUCTLIST.clear();
+        PRODUCTLIST.clear();
         try {
             String query = "SELECT * FROM producto";
             result = con.createStatement().executeQuery(query);
@@ -184,9 +194,9 @@ public class puntodeventa implements Initializable {
     @FXML
     private void logoutAction(ActionEvent event) throws IOException {
         Node node;
-    Stage stage;
-    Parent parent;
-    Scene root;
+        Stage stage;
+        Parent parent;
+        Scene root;
         node = (Node) event.getSource();
         stage = (Stage) node.getScene().getWindow();
 
@@ -203,11 +213,13 @@ public class puntodeventa implements Initializable {
     @FXML
     private void addAction(ActionEvent event) {
         if (validateInput()) {
+            String idProducto = this.getIdProducto();
             String productName = productField.getText();
             double unitPrice = Double.parseDouble(priceField.getText());
             double quantity = Double.parseDouble(quantityField.getText());
             double total = unitPrice * quantity;
-            ITEMLIST.add(new articulo(productName, unitPrice, quantity, total));
+            System.out.println("en addaction: "+idProducto);
+            ITEMLIST.add(new articulo(idProducto, productName, unitPrice, quantity, total));
             calculation();
 
             resetAdd();
@@ -270,30 +282,29 @@ public class puntodeventa implements Initializable {
             stage.setTitle("Registro Clientes");
             stage.show();Funciona*/
             FXMLLoader loader = new FXMLLoader((getClass().getResource("/Facturacion/pagos/facturacion.fxml")));
-        FacturacionController controller = new FacturacionController();
-        loader.setController(controller);
-        controller.setData(Double.parseDouble(netPayableField.getText().trim()), sold, payment);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        root.setOnMousePressed((MouseEvent e) -> {
-            xOffset = e.getSceneX();
-            yOffset = e.getSceneY();
-        });
-        root.setOnMouseDragged((MouseEvent e) -> {
-            stage.setX(e.getScreenX() - xOffset);
-            stage.setY(e.getScreenY() - yOffset);
-        });
-        Scene scene = new Scene(root);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Pagos");
-        stage.initStyle(StageStyle.UNDECORATED);
-        //stage.getIcons().add(new Image("../Imagenes/letrero.png"));
-        stage.setScene(scene);
-        stage.showAndWait();
-
+            FacturacionController controller = new FacturacionController();
+            loader.setController(controller);
+            controller.setData(Double.parseDouble(netPayableField.getText().trim()), sold, payment);
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            root.setOnMousePressed((MouseEvent e) -> {
+                xOffset = e.getSceneX();
+                yOffset = e.getSceneY();
+            });
+            root.setOnMouseDragged((MouseEvent e) -> {
+                stage.setX(e.getScreenX() - xOffset);
+                stage.setY(e.getScreenY() - yOffset);
+            });
+            Scene scene = new Scene(root);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Pagos");
+            stage.initStyle(StageStyle.UNDECORATED);
+            //stage.getIcons().add(new Image("../Imagenes/letrero.png"));
+            stage.setScene(scene);
+            stage.showAndWait();
 
         } catch (Exception e) {
-            System.out.println("Error en punto de venta: "+e);
+            System.out.println("Error en punto de venta: " + e);
         }
 
         resetInterface();
@@ -326,6 +337,8 @@ public class puntodeventa implements Initializable {
 
     private void showDetails(ClaseProducto product) {
         if (product != null) {
+            this.setIdProducto(product.getIdProducto());
+            System.out.println("Idproducto in puntodeventa:" + this.getIdProducto());
             quantityField.setDisable(false);
             productField.setText(product.getNombre());
             priceField.setText(String.valueOf(product.getPrecioV()));

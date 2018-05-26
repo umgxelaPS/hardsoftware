@@ -96,7 +96,7 @@ public class FacturacionController implements Initializable {
                 String invoiceId = String.valueOf(new Timestamp(System.currentTimeMillis()).getTime());
                 System.out.println("Factuacion controller: " + invoiceId);
 for (articulo i : items){
-    System.out.println("Item: "+i.getItemName());
+    System.out.println("Item: "+i.getIdItem()+"\nProducto:"+i.getItemName());
 }
                 /* fact venta = new fact(
                 Integer.parseInt(invoiceId), nitCliente, modopago, cliente, fecha
