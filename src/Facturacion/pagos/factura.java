@@ -12,8 +12,9 @@ import javax.persistence.Table;*/
 //@Entity
 //@Table(name = "invoices")
 public class factura implements Serializable {
-    
-   // @Id
+      //Nit cliente,nombre cliente,fechapago,modopago,subtotalfac,iva,totalfac
+   
+// @Id
     //@Column(name = "id")
     private String id;
     

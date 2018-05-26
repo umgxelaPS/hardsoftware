@@ -158,7 +158,7 @@ public class puntodeventa implements Initializable {
 
     public void Informacion() {
         // PRODUCTLIST = FXCollections.observableArrayList();
- PRODUCTLIST.clear();
+        PRODUCTLIST.clear();
         try {
             String query = "SELECT * FROM producto";
             result = con.createStatement().executeQuery(query);
@@ -185,9 +185,9 @@ public class puntodeventa implements Initializable {
     @FXML
     private void logoutAction(ActionEvent event) throws IOException {
         Node node;
-    Stage stage;
-    Parent parent;
-    Scene root;
+        Stage stage;
+        Parent parent;
+        Scene root;
         node = (Node) event.getSource();
         stage = (Stage) node.getScene().getWindow();
 
@@ -236,17 +236,21 @@ public class puntodeventa implements Initializable {
     }
 
     @FXML
-    private void paymentAction(ActionEvent event) throws IOException {
-        pago payment = new pago(
-                Double.parseDouble(subTotalField.getText().trim()),
-                Double.parseDouble(vatField.getText().trim()),
-                Double.parseDouble(discountField.getText().trim()),
-                Double.parseDouble(netPayableField.getText().trim())
-        );
-
-        ObservableList<articulo> sold = listTableView.getItems();
-
+    private void paymentAction(ActionEvent event) {
         try {
+            pago payment = new pago(
+                    Double.parseDouble(subTotalField.getText().trim()),
+                    Double.parseDouble(vatField.getText().trim()),
+                    Double.parseDouble(discountField.getText().trim()),
+                    Double.parseDouble(netPayableField.getText().trim())
+            );
+
+            ObservableList<articulo> sold = listTableView.getItems();
+            sold.forEach((i) -> {
+                System.out.println("Punto de venta: Producto: " + i.getItemName());
+
+            });
+
             /*node = (Node) event.getSource();
             stage = (Stage) node.getScene().getWindow();
 
@@ -271,30 +275,29 @@ public class puntodeventa implements Initializable {
             stage.setTitle("Registro Clientes");
             stage.show();Funciona*/
             FXMLLoader loader = new FXMLLoader((getClass().getResource("/Facturacion/pagos/facturacion.fxml")));
-        FacturacionController controller = new FacturacionController();
-        loader.setController(controller);
-        controller.setData(Double.parseDouble(netPayableField.getText().trim()), sold, payment);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        root.setOnMousePressed((MouseEvent e) -> {
-            xOffset = e.getSceneX();
-            yOffset = e.getSceneY();
-        });
-        root.setOnMouseDragged((MouseEvent e) -> {
-            stage.setX(e.getScreenX() - xOffset);
-            stage.setY(e.getScreenY() - yOffset);
-        });
-        Scene scene = new Scene(root);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Pagos");
-        stage.initStyle(StageStyle.UNDECORATED);
-        //stage.getIcons().add(new Image("../Imagenes/letrero.png"));
-        stage.setScene(scene);
-        stage.showAndWait();
+            FacturacionController controller = new FacturacionController();
+            loader.setController(controller);
+            controller.setData(Double.parseDouble(netPayableField.getText().trim()), sold, payment);
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            root.setOnMousePressed((MouseEvent e) -> {
+                xOffset = e.getSceneX();
+                yOffset = e.getSceneY();
+            });
+            root.setOnMouseDragged((MouseEvent e) -> {
+                stage.setX(e.getScreenX() - xOffset);
+                stage.setY(e.getScreenY() - yOffset);
+            });
+            Scene scene = new Scene(root);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Pagos");
+            stage.initStyle(StageStyle.UNDECORATED);
+            //stage.getIcons().add(new Image("../Imagenes/letrero.png"));
+            stage.setScene(scene);
+            stage.showAndWait();
 
-
-        } catch (Exception e) {
-            System.out.println("Error en punto de venta: "+e);
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Error en punto de venta: " + e);
         }
 
         resetInterface();
@@ -312,14 +315,12 @@ public class puntodeventa implements Initializable {
                     String lowerCaseFilter = newValue.toLowerCase();
                     if (producto.getNombre().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    }else if(producto.getIdProducto().toLowerCase().contains(lowerCaseFilter)){
+                    } else if (producto.getIdProducto().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    } else if (producto.getMarca().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
                     }
-                    else if (producto.getMarca().toLowerCase().contains(lowerCaseFilter)) {
-                        return true;
-                    }
-                    
-                    
+
                     return false;
                 });
             });
@@ -393,8 +394,8 @@ public class puntodeventa implements Initializable {
 
         if (subTotalPrice > 0) {
             paymentButton.setDisable(false);
-            double vat = (double) subTotalPrice * 0.025;
-            double netPayablePrice = (double) (Math.abs((subTotalPrice + vat) - 5));
+            double vat = (double) subTotalPrice * 0.012;
+            double netPayablePrice = (double) (Math.abs((subTotalPrice + vat) - 0));
 
             subTotalField.setText(String.valueOf(subTotalPrice));
             vatField.setText(String.valueOf(vat));

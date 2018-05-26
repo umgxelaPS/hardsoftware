@@ -69,48 +69,55 @@ public class FacturacionController implements Initializable {
 
     @FXML
     private void confirmAction(ActionEvent event) throws IOException {
-      /*  if (validateInput()) {
-            double paid = Double.parseDouble(paidAmountField.getText().trim());
-            double retail = Math.abs(paid - netPrice);
+      try{
+         
+           if (validateInput()) {
+                System.out.println("DATO");
+          double paid = Double.parseDouble(paidAmountField.getText().trim());
+          double retail = Math.abs(paid - netPrice);
+          
+               
+          String invoiceId = String.valueOf(new Timestamp(System.currentTimeMillis()).getTime());
+          
+          System.out.println("Pago: "+paid+"\nVenta: "+retail+"\nInvocedID: "+invoiceId);
+ 
+          //Nit cliente,nombre cliente,fechapago,modopago,subtotalfac,iva,totalfac
+          /*
+          factura invoice = new factura(
+          invoiceId,
+          employeeModel.getEmployee(2),
+          payment.getSubTotal(),
+          payment.getVat(),
+          payment.getDiscount(),
+          payment.getPayable(),
+          paid,
+          retail
+          );*/
 
-            String invoiceId = String.valueOf(new Timestamp(System.currentTimeMillis()).getTime());
-
-            factura invoice = new factura(
-                    invoiceId,
-                    employeeModel.getEmployee(2),
-                    payment.getSubTotal(),
-                    payment.getVat(),
-                    payment.getDiscount(),
-                    payment.getPayable(),
-                    paid,
-                    retail
-            );
-
-            invoiceModel.saveInvoice(invoice);
+            //invoiceModel.saveInvoice(invoice);
             //*****Importantisimo************
-            /*      
-           for (articulo i : items) {
-
-                Producto p = productModel.getProductByName(i.getItemName());
+            //items.forEach((i) -> {
+                /*Producto p = productModel.getProductByName(i.getItemName());
                 double quantity = p.getQuantity() - i.getQuantity();
                 p.setQuantity(quantity);
                 productModel.decreaseProduct(p);
-
+                
                 Sale sale = new Sale(
-                        invoiceModel.getInvoice(invoiceId),
-                        productModel.getProductByName(i.getItemName()),
-                        i.getQuantity(),
-                        i.getUnitPrice(),
-                        i.getTotal()
+                invoiceModel.getInvoice(invoiceId),
+                productModel.getProductByName(i.getItemName()),
+                i.getQuantity(),
+                i.getUnitPrice(),
+                i.getTotal()
                 );
-
-                salesModel.saveSale(sale);
-            }
-            try {
-                /* FXMLLoader loader = new FXMLLoader((getClass().getResource("/Facturacion/pagos/confirmar.fxml")));
+                
+                salesModel.saveSale(sale);*/
+             //   System.out.println("Facturacion controller: "+i.getItemName());
+           //});
+            /*try {
+                 FXMLLoader loader = new FXMLLoader((getClass().getResource("/Facturacion/pagos/confirmar.fxml")));
                 ConfirmarController controller = new ConfirmarController();
                 //Datos importante
-                //controller.setData(retail, items, invoiceId);
+                controller.setData(retail, items, invoiceId);
                 loader.setController(controller);
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
@@ -126,13 +133,15 @@ public class FacturacionController implements Initializable {
                 stage.setTitle("Confirm");
                 stage.getIcons().add(new Image("/Imagenes/logo.png"));
                 stage.setScene(scene);
-                stage.show();*
+                stage.show();
             //Variables para Cambio de escenas
        
             } catch (Exception e) {
                 System.out.println("Error en Facturacion Controller: " + e);
-            }
-        }*/
+            }*/
+            
+        }
+      /*
        node=(Node) event.getSource();
         stage=(Stage) node.getScene().getWindow();
         
@@ -142,7 +151,12 @@ public class FacturacionController implements Initializable {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setTitle("Registro Empleados");
-        stage.show();
+        stage.show();  */
+      }catch(Exception e){
+          System.out.println("Facturacion controller: "+e);
+      }
+       
+
     }
 
     public void setData(double netPrice, ObservableList<articulo> items, pago payment) {

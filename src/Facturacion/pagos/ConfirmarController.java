@@ -41,7 +41,7 @@ public class ConfirmarController implements Initializable {
 
         StringBuilder details = new StringBuilder("Item Name\t\t" + "Cost\t\t" + "Quantity\t\t" + "Total\n");
 
-        /*  for (Producto i : items) {
+        /* for (Producto i : items) {
         details.append(i.getItemName())
         .append("\t\t\t")
         .append(i.getUnitPrice())
