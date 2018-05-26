@@ -9,9 +9,13 @@
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <jar href="HardS_FX.jar" size="596416" download="eager" />
 =======
     <jar href="HardS_FX.jar" size="599626" download="eager" />
+>>>>>>> new
+=======
+    <jar href="HardS_FX.jar" size="599693" download="eager" />
 >>>>>>> new
     <jar href="lib\charm-glisten-4.4.1.jar" size="1040787" download="eager" />
     <jar href="lib\fontawesomefx-8.9.jar" size="571068" download="eager" />

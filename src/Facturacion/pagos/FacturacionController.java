@@ -138,6 +138,14 @@ public class FacturacionController implements Initializable {
                     
                 preparar.executeUpdate();
                     
+                
+                //Restar invetario
+                 sql = "select bd_hardsoftware.restarinvetario(?,?);";
+
+                preparar = con.prepareStatement(sql);
+                preparar.setInt(1, Integer.parseInt(capturadol)+1);
+                preparar.setInt(2, cantidad );
+                preparar.executeQuery();
                 }
                 /* for (articulo i : items) {
                 
