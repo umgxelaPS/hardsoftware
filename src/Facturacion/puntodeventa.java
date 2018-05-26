@@ -158,7 +158,7 @@ public class puntodeventa implements Initializable {
 
     public void Informacion() {
         // PRODUCTLIST = FXCollections.observableArrayList();
- 
+ PRODUCTLIST.clear();
         try {
             String query = "SELECT * FROM producto";
             result = con.createStatement().executeQuery(query);
