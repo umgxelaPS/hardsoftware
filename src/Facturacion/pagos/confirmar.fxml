@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="450.0" styleClass="vBox-background" stylesheets="@../pagos/confirm.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Facturacion.pagos.ConfirmarController">
+<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="450.0" styleClass="vBox-background" stylesheets="@../pagos/confirm.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="450.0" VBox.vgrow="NEVER">
          <children>
