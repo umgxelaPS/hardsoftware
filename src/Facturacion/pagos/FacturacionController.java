@@ -90,20 +90,17 @@ public class FacturacionController implements Initializable {
             if (validateInput()) {
                 double paid = Double.parseDouble(paidAmountField.getText().trim());
                 double retail = Math.abs(paid - netPrice);
-                int nitCliente = 0, modopago = 0;
-                String cliente = "", fecha = "";
+                int nitCliente =25478964 , modopago = 1;
+                String cliente = "Consumidor final", fecha = "2018-05-26";
 
                 String invoiceId = String.valueOf(new Timestamp(System.currentTimeMillis()).getTime());
                 System.out.println("Factuacion controller: " + invoiceId);
-for (articulo i : items){
-    System.out.println("Item: "+i.getIdItem()+"\nProducto:"+i.getItemName());
-}
+                
                 /* fact venta = new fact(
                 Integer.parseInt(invoiceId), nitCliente, modopago, cliente, fecha
                 );*/
                 //Sentencia SQL**************
                 String capturadol = "";
-                String capturado2 = "";
                 String sql = "SELECT MAX(no_factura) AS no_factura FROM factura";
 
                 Statement st = con.createStatement();
@@ -112,24 +109,36 @@ for (articulo i : items){
                     capturadol = rs.getString("no_factura");
 
                 }
-                System.out.println("No factura"+capturadol);
+                System.out.println("No factura" + capturadol);
                 //***************
-             /*/  String sql;
 
                 //Guardar Registros en BD
                 sql = "INSERT INTO bd_hardsoftware.factura (no_factura,nit_cliente,nombre_cliente,fecha_emision,modo_pago) VALUES (?,?,?,?,?);";
 
                 preparar = con.prepareStatement(sql);
-                preparar.setInt(1, Integer.parseInt(invoiceId));
+                preparar.setInt(1, Integer.parseInt(capturadol)+1);
                 preparar.setInt(2, nitCliente);
-                preparar.setInt(3, modopago);
-                preparar.setString(4, cliente);
-                preparar.setString(5, fecha);
+                preparar.setString(3, cliente);
+                preparar.setString(4, fecha);
+                preparar.setInt(5, modopago);
                 preparar.executeUpdate();
-*/
+
                 //invoiceModel.saveInvoice(invoice);
                 //*****Importantisimo************
-
+               
+                for (articulo i : items) {
+                     //Guardar Registros en BD
+                 sql = "INSERT INTO `bd_hardsoftware`.`detalle_f` (no_factura,id_producto,cantidad) VALUES (?,?,?);";
+                preparar = con.prepareStatement(sql);
+                preparar.setString(1, String.valueOf(Integer.parseInt(capturadol)+1));
+                preparar.setString(2, i.getIdItem());
+                int cantidad = (int) Math.round(i.getQuantity());
+                    System.out.println("Entero: "+cantidad );
+                preparar.setInt(3, cantidad );
+                    
+                preparar.executeUpdate();
+                    
+                }
                 /* for (articulo i : items) {
                 
                 Producto p = productModel.getProductByName(i.getItemName());
